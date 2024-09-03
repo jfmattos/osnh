@@ -7,3 +7,20 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+Survey.destroy_all
+
+Survey.create!(
+  title: "WHO: Quality of Life (WHOQOL)",
+  interval_days: [90, 90, 180]
+)
+
+Survey.create!(
+  title: "WHO: Disability Assesment Schedule 2.0 (WHODAS)",
+  interval_days: [90, 90, 180]
+)
+
+Survey.create!(
+  title: "SF-36",
+  interval_days: [90, 90, 180]
+)
