@@ -14,16 +14,16 @@ Place.destroy_all
 
 Place.create!(
   name: "Fitness Place",
-  address: "R. Cap. Barbosa, 871 - Cocotá, Rio de Janeiro - RJ, 21921-970",
+  address: "R. Cap. Barbosa, 871 - Cocotá, Rio de Janeiro",
   opening_hours: "05:30 - 23:00",
   email: "fit@smart.com",
   phone_number: "(21)1234-5678",
-  services: "gym classes"
+  services: "Gym classes"
 )
 
 Place.create!(
   name: "Sports Club",
-  address: "R. Ten. Cleto Campelo, 497 - Cocotá, Rio de Janeiro - RJ, 21921-025",
+  address: "R. Ten. Cleto Campelo, 497 - Cocotá, Rio de Janeiro",
   opening_hours: "07:00 - 22:00",
   email: "sport@club.com",
   phone_number: "(21)3396-3304",
@@ -32,7 +32,7 @@ Place.create!(
 
 Place.create!(
   name: "Religious Center",
-  address: "Praia Congonhas do Campo, 151 - Bancários, Rio de Janeiro - RJ, 21910-410",
+  address: "Praia Congonhas do Campo, 151 - Bancários, Rio de Janeiro",
   opening_hours: "13:00 - 21:00",
   email: "religious@center.com",
   phone_number: "(21)9697-2119",
@@ -41,14 +41,11 @@ Place.create!(
 
 Place.create!(
   name: "Manuel Bandeira Park",
-  address: "Praia da Olaria, 155 - Cocotá, Rio de Janeiro - RJ, 21910-295",
+  address: "Praia da Olaria, 155 - Cocotá, Rio de Janeiro",
   opening_hours: "24 hours",
   email: "manuel@bandeira.com",
   phone_number: "N/A",
-  services: "sporting equipment, green fields"
+  services: "Sporting equipment, green fields"
 )
-
-
-
 
 puts "places created!"
