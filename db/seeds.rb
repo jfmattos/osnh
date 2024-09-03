@@ -9,18 +9,83 @@
 #   end
 
 Survey.destroy_all
+Question.destroy_all
 
-Survey.create!(
+# =======
+# SURVEYS
+# =======
+
+whoqol = Survey.create!(
   title: "WHO: Quality of Life (WHOQOL)",
   interval_days: [90, 90, 180]
 )
 
-Survey.create!(
+whodas = Survey.create!(
   title: "WHO: Disability Assesment Schedule 2.0 (WHODAS)",
   interval_days: [90, 90, 180]
 )
 
-Survey.create!(
+sf36 = Survey.create!(
   title: "SF-36",
   interval_days: [90, 90, 180]
 )
+
+# =========
+# QUESTIONS
+# =========
+
+# require_relative "seeds_sf36"
+# require_relative "seeds_whodas"
+require_relative "seeds_whoqol"
+
+# =======
+# ANSWERS
+# =======
+
+Answer.create!(
+  content: ,
+  question: whoqol_01
+)
+
+# 1/2
+# MUITO RUIM
+# RUIM
+# NEM RUIM NEM BOA
+# BOA
+# MUITO BOA
+
+# 3/9
+# NADA
+# MUITO POUCO
+# MAIS OU MENOS
+# BASTANTE
+# EXTREMAMENTE
+
+# 10/14
+# NADA
+# MUITO POUCO
+# MÉDIO
+# MUITO
+# COMPLETAMENTE
+
+# 15
+# MUITO RUIM
+# RUIM
+# NEM RUIM
+# NEM BOM
+# BOM
+# MUITO BOM
+
+# 16/25
+# MUITO INSATISFEITO
+# INSATISFEITO
+# NEM SATISFEITO NEM INSATISFEITO
+# SATISFEITO
+# MUITO SATISFEITO
+
+# 26
+# MUITO INSATISFEITO
+# INSATISFEITO
+# NEM SATISFEITO NEM INSATISFEITO
+# SATISFEITO
+# MUITO SATISFEITO
