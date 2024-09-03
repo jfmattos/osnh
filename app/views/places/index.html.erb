@@ -1,0 +1,15 @@
+<h1>this is the index of places</h1>
+
+<div class="container">
+  <div class="cards">
+    <% @places.each do |place| %>
+      <h3><%= place.name %></h3>
+      <p>Address: <%= place.address %></p>
+      <p>Opening hours: <%= place.opening_hours %></p>
+      <p>Email: <%= place.email %></p>
+      <p>Phone: <%= place.phone_number %></p>
+      <p>Services: <%= place.services %></p>
+    <% end %>
+  </div>
+
+</div>
