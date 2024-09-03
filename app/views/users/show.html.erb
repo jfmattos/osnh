@@ -1,18 +1,90 @@
 <div class="container mt-4">
   <div class="row">
     <div class="cards col-12 col-lg-6 border-0">
-      <div class="card border-2 rounded-3">
-        <p> Test text </p>
-        <p> Test text </p>
-        <p> Test text </p>
-        <p> Test text </p>
-        <p> Test text </p>
-        <p> Test text </p>
-        <p> Test text </p>
-        <p> Test text </p>
-        <p> Test text </p>
-        <p> Test text </p>
+      <div class="card mb-3 border-2 rounded-5">
+        <div class="row g-0">
+          <div class="col-4 border-0">
+            <% if current_user.photo.attached? %>
+              <img src="<%= cl_image_tag photo.key, width: '100%' %>" class="img-fluid rounded-circle" alt="profile picture">
+            <% else %>
+              <%= image_tag "user_icon.jpg", class: "img-fluid rounded-circle", alt: "profile picture" %>
+            <% end %>
+          </div>
+          <div class="col-8 border-0 ">
+            <div class="card m-2 border-0">
+              <h4 class="card-title"><%= current_user.first_name %> <%= current_user.last_name %></h4>
+              <p><strong>CNS:</strong> <%= current_user.cns %></p>
+              <p><strong>Address:</strong> <%= current_user.address %></p>
+              <p><strong>Phone Number:</strong> <%= current_user.phone_number %></p>
+              <p><strong>e-mail:</strong> <%= current_user.email %></p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+
+  <div class="row">
+    <div class="cards col-12 col-lg-6 border-0">
+      <div class="card mb-3 border-2 rounded-5">
+        <div class="row g-0">
+          <div class="card border-0 rounded-5">
+            <h4 class="card-header">MY HEALTH SPACE</h4>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-8 border-0 ">
+                  <% @my_diagnoses.each do |diagnosis| %>
+                  <div>
+                    <h5 class="card-title"><%= diagnosis.disease %></h5>
+                    <ul>
+                    <%# diagnosis.medication.each do |med| %>
+                      <li><%= medication %></li>
+                    <%# end %>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Go to my diagnosis</a>
+                  </div>
+                  <% end %>
+                </div>
+                <div class="col-4 border-0">
+                  <strong>My appointments:</strong>
+                  <strong>ADD CALENDAR</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="cards col-12 col-lg-6 border-0">
+      <div class="card mb-3 border-2 rounded-5">
+        <div class="row g-0">
+          <div class="card border-0 rounded-5">
+            <h4 class="card-header">HOW I'VE BEEN FEELING</h4>
+            <div class="card-body">
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="cards col-12 col-lg-6 border-0">
+      <div class="card mb-3 border-2 rounded-5">
+        <div class="row g-0">
+          <div class="card border-0 rounded-5">
+            <h4 class="card-header">FAVORITE PLACES</h4>
+            <div class="card-body">
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
