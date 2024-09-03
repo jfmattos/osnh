@@ -48,4 +48,44 @@ Place.create!(
   services: "Sporting equipment, green fields"
 )
 
+Place.create!(
+  name: "Governor's Island Union",
+  address: "Estrada do Galeão, 322 - Cacuia, Rio de Janeiro",
+  opening_hours: "08:00 - 17:00",
+  email: "island@union.com",
+  phone_number: "(21)3396-8169",
+  services: "Samba classes"
+)
+
+Place.create!(
+  name: "Rotary Club",
+  address: "R. Colina, 60 - Jardim Guanabara, Rio de Janeiro",
+  opening_hours: "09:00 - 17:00",
+  email: "rotary@club.com",
+  phone_number: "(21)24630156",
+  services: "Public classes and child support"
+)
+
+Place.create!(
+  name: "Civil Registration",
+  address: "Praia da Olaria, 155 - Cocotá, Rio de Janeiro",
+  opening_hours: "09:00 - 17:00",
+  email: "civil@registration.com",
+  phone_number: "(21)3386-1504",
+  services: "Civil registration and documentation"
+)
+
+Place.create!(
+  name: "Governor's Island Forum",
+  address: "Praia da Olaria - Cocotá, Rio de Janeiro",
+  opening_hours: "09:00 - 17:00",
+  email: "island@forum.com",
+  phone_number: "(21)3626-4700",
+  services: "Tax Enforcement, Judicial Reorganizations and Arbitration-Related Disputes, Special Civil Courts,Mediation and Conciliation."
+)
+
+
+
+
+
 puts "places created!"
