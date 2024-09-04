@@ -33,7 +33,7 @@ Place.create!(
 
 Place.create!(
   name: "Religious Center",
-  address: "Praia Congonhas do Campo, 151 - Bancários, Rio de Janeiro",
+  address: "R. Grana, 200 - Ilha do Governador, Rio de Janeiro - RJ, 21920-500",
   opening_hours: "13:00 - 21:00",
   email: "religious@center.com",
   phone_number: "(21)9697-2119",
@@ -90,7 +90,7 @@ Place.create!(
 
 
 puts "places created!"
-#Resource.destroy_all
+# Resource.destroy_all
 
 # d = [
 # "Explain to me in five paragraphs the causes, symptoms, and treatments for Diabetes",

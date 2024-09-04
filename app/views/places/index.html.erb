@@ -7,10 +7,10 @@
       data-map-markers-value="<%= @markers.to_json %>"
       style='width: 100%; height: 250px;'>
   </div>
-  <h1>Places</h1>
+  <h1 class="mt-4">Places</h1>
     <% @places.each do |place| %>
       <div class="cards">
-        <h3><%= place.name %></h3>
+        <h4><%= place.name %></h3>
         <div data-controller="read-more" data-read-more-more-text-value="Read more" data-read-more-less-text-value="Read less">
           <div class="my-content" data-read-more-target="content">
             <p>Address: <%= place.address %></p>
