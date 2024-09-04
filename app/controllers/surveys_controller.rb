@@ -1,5 +1,5 @@
 class SurveysController < ApplicationController
-  before_action :set_survery, only: %i[destroy]
+  before_action :set_survery, only: %i[destroy show]
   
   def index
     @survey = Survey.all
@@ -15,6 +15,9 @@ class SurveysController < ApplicationController
 
   def destroy
     @survey.destroy
+  end
+
+  def show
   end
 
   private
