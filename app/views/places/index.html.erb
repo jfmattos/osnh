@@ -24,18 +24,22 @@
 
 
     <% @places.each do |place| %>
-      <div class="cards">
-        <h4><%= place.name %></h3>
-        <div data-controller="read-more" data-read-more-more-text-value="Read more" data-read-more-less-text-value="Read less">
-          <div class="my-content" data-read-more-target="content">
-            <p>Address: <%= place.address %></p>
-            <p>Opening hours: <%= place.opening_hours %></p>
-            <p>Email: <%= place.email %></p>
-            <p>Phone: <%= place.phone_number %></p>
-            <p>Services: <%= place.services %></p>
+      <div class="row">
+        <div class="col-12">
+          <div class="cards">
+            <h4><%= place.name %></h3>
+            <div data-controller="read-more" data-read-more-more-text-value="Read more" data-read-more-less-text-value="Read less">
+              <div class="my-content" data-read-more-target="content">
+                <p>Address: <%= place.address %></p>
+                <p>Opening hours: <%= place.opening_hours %></p>
+                <p>Email: <%= place.email %></p>
+                <p>Phone: <%= place.phone_number %></p>
+                <p>Services: <%= place.services %></p>
+              </div>
+              <button class="btn btn-outline-primary btn-sm mt-2" data-action="read-more#toggle">Read more</button>
+            </div>
           </div>
-          <button class="btn btn-outline-primary btn-sm mt-2" data-action="read-more#toggle">Read more</button>
+          <% end %>
         </div>
       </div>
-      <% end %>
 </div>
