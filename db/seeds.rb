@@ -37,4 +37,9 @@ sf36 = Survey.create!(
 # require_relative "seeds_sf36"
 # require_relative "seeds_whodas"
 require_relative "seeds_whoqol"
+
+# =======
+# ANSWERS
+# =======
+
 require_relative "seeds_whoqol_answers"
