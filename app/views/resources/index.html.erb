@@ -1,1 +1,19 @@
-<h1> HEALTH </h1>
+<div class= "container" >
+
+  <div class="banner">
+    <h1>Your health in your hands</h1>
+  </div>
+
+  <div class = "cards-resources">
+    <% @resources.each do |resource| %>
+      <%= link_to resource_path(resource), class: 'text-decoration-none' do %>
+        <%#= adding cloudinary function to show castle images %>
+        <%#=if user uploads the picture then it's going to show, else it's showing the DB picture %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)" >
+          <h3><%= resource.name %></h3>
+          <p><%= "More information to protect yourself and your health" %></p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
