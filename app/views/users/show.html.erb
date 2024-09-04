@@ -47,7 +47,14 @@
                 </div>
                 <div class="col-4 border-0">
                   <strong>My appointments:</strong>
-                  <strong>ADD CALENDAR</strong>
+                  <%= month_calendar(events: @appointments) do |date, appointments| %>
+                    <%= date %>
+                    <% appointments.each do |appointment| %>
+                      <div class="appointment">  <-- We will add some style to the appointment class later so let's add it now -->
+                        <p><%= appointment.name %></p>
+                      </div>
+                    <% end %>
+                  <% end %>
                 </div>
               </div>
             </div>

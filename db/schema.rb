@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_03_201522) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_04_145758) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,6 +48,17 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_03_201522) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["question_id"], name: "index_answers_on_question_id"
+  end
+
+  create_table "appointments", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_appointments_on_user_id"
   end
 
   create_table "diagnoses", force: :cascade do |t|
@@ -123,6 +134,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_03_201522) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "answers", "questions"
+  add_foreign_key "appointments", "users"
   add_foreign_key "diagnoses", "users"
   add_foreign_key "questions", "surveys"
   add_foreign_key "user_answers", "answers"

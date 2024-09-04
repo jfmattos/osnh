@@ -32,7 +32,7 @@ User.create(
   email: 'jd@1.com',
   password: '123456'
 )
-#Resource.destroy_all
+# Resource.destroy_all
 
 # d = [
 # "Explain to me in five paragraphs the causes, symptoms, and treatments for Diabetes",
