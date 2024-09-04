@@ -9,16 +9,10 @@
 #   end
 
 Survey.destroy_all
-Question.destroy_all
 
 # =======
 # SURVEYS
 # =======
-
-whoqol = Survey.create!(
-  title: "WHO: Quality of Life (WHOQOL)",
-  interval_days: [90, 90, 180]
-)
 
 whodas = Survey.create!(
   title: "WHO: Disability Assesment Schedule 2.0 (WHODAS)",
@@ -42,4 +36,4 @@ require_relative "seeds_whoqol"
 # ANSWERS
 # =======
 
-require_relative "seeds_whoqol_answers"
+# require_relative "seeds_whoqol_answers"
