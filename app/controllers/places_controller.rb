@@ -10,5 +10,9 @@ class PlacesController < ApplicationController
       }
     end
 
+    if params[:query].present?
+      @places = @places.search_by(params[:query])
+    end
+
   end
 end
