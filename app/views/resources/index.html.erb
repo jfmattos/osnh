@@ -6,25 +6,14 @@
 
   <div class = "cards">
     <% @resources.each do |resource| %>
-      <%= link_to castle_path(castle), class: 'no_underline' do %>
+      <%= link_to resource_path(resource), class: 'text-decoration-none' do %>
         <%#= adding cloudinary function to show castle images %>
         <%#=if user uploads the picture then it's going to show, else it's showing the DB picture %>
-        <% if castle.photos.attached? %>
-          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(<%= cl_image_path castle.photos.first.key %>)">
-            <h3><%= castle.castle_name %></h3>
-            <p><%= castle.location %></p>
-          </div>
-        <% else %>
-          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(<%= castle.castle_picture %>)">
-            <h3><%= castle.castle_name %></h3>
-            <p><%= castle.location %></p>
-          </div>
-        <% end %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)" >
+          <h3><%= resource.name %></h3>
+          <p><%= "More information to protect yourself and your health" %></p>
+        </div>
       <% end %>
     <% end %>
   </div>
-
-
-
-
 </div>
