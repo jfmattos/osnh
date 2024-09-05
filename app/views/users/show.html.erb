@@ -1,4 +1,8 @@
 <div class="container mt-4">
+  <div class="cards col-12 col-lg-6 border-0 rounded-5 p-2">
+    <h1 class="text-center mt-1 mb-0 text-uppercase align-bottom fw-bolder">MY HEALTH SPACE</h1>
+  </div>
+
   <div class="row">
     <div class="cards col-12 col-lg-6 border-0 rounded-5">
       <div class="card mb-0 border-2 rounded-5">
@@ -12,7 +16,7 @@
           </div>
           <div class="col-8 border-0 ">
             <div class="card m-2 border-0">
-              <h4 class="card-title fw-bolder"><%= current_user.first_name %> <%= current_user.last_name %></h4>
+              <h4 class="card-title fw-bolder text-uppercase"><%= current_user.first_name %> <%= current_user.last_name %></h4>
               <p><strong>CNS:</strong> <%= current_user.cns %></p>
               <p><strong>Address:</strong> <%= current_user.address %></p>
               <p><strong>Phone Number:</strong> <%= current_user.phone_number %></p>
@@ -29,13 +33,13 @@
       <div class="card mb-0 border-2 rounded-5">
         <div class="row g-0">
           <div class="card border-0 rounded-5">
-            <h4 class="card-header">MY DIAGNOSES</h4>
+            <h4 class="card-header text-uppercase">MY DIAGNOSES</h4>
             <div class="card-body">
               <% @my_diagnoses.each do |diagnosis| %>
                 <div class="card rounded-5 m-2">
-                  <div class="card-header rounded-5"><strong><%= diagnosis.disease %></strong></div>
+                  <div class="card-header text-uppercase rounded-5"><strong><%= diagnosis.disease %></strong></div>
                   <div class="card-body">
-                    <p class="fw-3 mb-0"><%= diagnosis.medication %></p>
+                    <p class="fw-3 mb-0 text-uppercase"><%= diagnosis.medication %></p>
                   </div>
                   <div class="row d-flex justify-content-end p-4">
                     <div class="button-links">
@@ -46,7 +50,7 @@
                 </div>
               <% end %>
               <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <%= link_to "Add", new_diagnosis_path, class:"btn btn-primary rounded-3" %>
+                <%= link_to "Add new diagnosis", new_diagnosis_path, class:"btn btn-primary rounded-3" %>
               </div>
             </div>
           </div>
@@ -60,7 +64,7 @@
       <div class="card mb-0 border-2 rounded-5">
         <div class="row g-0">
           <div class="card border-0 rounded-5">
-            <h4 class="card-header">MY APPOINTMENTS</h4>
+            <h4 class="card-header text-uppercase">MY APPOINTMENTS</h4>
             <div class="card-body">
 
             </div>
@@ -75,7 +79,7 @@
       <div class="card mb-0 border-2 rounded-5">
         <div class="row g-0">
           <div class="card border-0 rounded-5">
-            <h4 class="card-header">HOW I'VE BEEN FEELING</h4>
+            <h4 class="card-header text-uppercase">HOW I'VE BEEN FEELING</h4>
             <div class="card-body">
 
             </div>
