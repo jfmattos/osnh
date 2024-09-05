@@ -11,9 +11,9 @@
 
 Survey.destroy_all
 
-# =======
+# -----------------------------------------------------------------------------
 # SURVEYS
-# =======
+# -----------------------------------------------------------------------------
 
 whodas = Survey.create!(
   title: "WHO: Disability Assesment Schedule 2.0 (WHODAS)",
@@ -25,22 +25,26 @@ sf36 = Survey.create!(
   interval_days: [90, 90, 180]
 )
 
-# =========
+# -----------------------------------------------------------------------------
 # QUESTIONS
-# =========
+# -----------------------------------------------------------------------------
 
 # require_relative "seeds_sf36"
 # require_relative "seeds_whodas"
 require_relative "seeds_whoqol"
 
-# =======
+# -----------------------------------------------------------------------------
 # ANSWERS
-# =======
+# -----------------------------------------------------------------------------
 
 # require_relative "seeds_whoqol_answers"
 
 # Resource.destroy_all
 puts "Creating users"
+
+# -----------------------------------------------------------------------------
+# USERS
+# -----------------------------------------------------------------------------
 
 User.destroy_all
 
@@ -90,6 +94,10 @@ mary = User.create!(
 
 puts "Users created!"
 
+# -----------------------------------------------------------------------------
+# DIAGNOSES
+# -----------------------------------------------------------------------------
+
 puts "Creating diagnoses"
 
 Diagnosis.destroy_all
@@ -98,7 +106,7 @@ Diagnosis.create!(
   disease: "Asthma",
   medication: "budesonida and formoterol",
   user: diana
-)
+)  
 
 Diagnosis.create!(
   disease: "ADHD",
@@ -144,11 +152,16 @@ Diagnosis.create!(
 
 puts "Diagnoses created!"
 
+# -----------------------------------------------------------------------------
+# PLACES
+# -----------------------------------------------------------------------------
+
+Place.create!(
+
 puts "Creating places"
 
 Place.destroy_all
 
-Place.create!(
   name: "Fitness Place",
   address: "R. Cap. Barbosa, 871 - Cocotá, Rio de Janeiro",
   opening_hours: "05:30 - 23:00",
@@ -222,6 +235,10 @@ Place.create!(
 
 puts "Places created!"
 
+
+# -----------------------------------------------------------------------------
+# RESOURCES
+# -----------------------------------------------------------------------------
 
 # Resource.destroy_all
 
