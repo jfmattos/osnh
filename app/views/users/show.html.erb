@@ -1,7 +1,7 @@
 <div class="container mt-4">
   <div class="row">
-    <div class="cards col-12 col-lg-6 border-0">
-      <div class="card mb-3 border-2 rounded-5">
+    <div class="cards col-12 col-lg-6 border-0 rounded-5">
+      <div class="card mb-0 border-2 rounded-5">
         <div class="row g-0">
           <div class="col-4 border-0">
             <% if current_user.photo.attached? %>
@@ -12,7 +12,7 @@
           </div>
           <div class="col-8 border-0 ">
             <div class="card m-2 border-0">
-              <h4 class="card-title"><%= current_user.first_name %> <%= current_user.last_name %></h4>
+              <h4 class="card-title fw-bolder"><%= current_user.first_name %> <%= current_user.last_name %></h4>
               <p><strong>CNS:</strong> <%= current_user.cns %></p>
               <p><strong>Address:</strong> <%= current_user.address %></p>
               <p><strong>Phone Number:</strong> <%= current_user.phone_number %></p>
@@ -25,28 +25,27 @@
   </div>
 
   <div class="row">
-    <div class="cards col-12 col-lg-6 border-0">
-      <div class="card mb-3 border-2 rounded-5">
+    <div class="cards col-12 col-lg-6 border-0 rounded-5">
+      <div class="card mb-0 border-2 rounded-5">
         <div class="row g-0">
           <div class="card border-0 rounded-5">
             <h4 class="card-header">MY HEALTH SPACE</h4>
             <div class="card-body">
-              <div class="row">
-                <% @my_diagnoses.each do |diagnosis| %>
-                  <div>
-                    <h5 class="card-title"><%= diagnosis.disease %></h5>
-                    <ul class="list-group">
-                    <% diagnosis.medication.each do |med| %>
-                      <li class="list-group-item">
-                      <%= medication %>
-                      </li>
-                    <% end %>
-                    </ul>
-                    <%= link_to "View", user_path %>
-                    <%= link_to "Remove", diagnosis_path(diagnosis),data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+              <h5 class="card-title fw-bolder">My diagnoses</h5>
+              <% @my_diagnoses.each do |diagnosis| %>
+                <div class="card rounded-5 m-2">
+                  <div class="card-header rounded-5"><strong><%= diagnosis.disease %></strong></div>
+                  <div class="card-body">
+                    <p class="fw-3 mb-0"><%= diagnosis.medication %></p>
                   </div>
-                <% end %>
-              </div>
+                  <div class="row d-flex justify-content-end p-4">
+                    <div class="button-links-sm">
+                      <%= link_to "Edit", edit_diagnosis_path, class:"btn btn-primary" %>
+                      <%= link_to "Delete", user_path, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-primary" %>
+                    </div>
+                    </div>
+                  </div>
+              <% end %>
             </div>
           </div>
         </div>
@@ -55,8 +54,8 @@
   </div>
 
   <div class="row">
-    <div class="cards col-12 col-lg-6 border-0">
-      <div class="card mb-3 border-2 rounded-5">
+    <div class="cards col-12 col-lg-6 border-0 rounded-5">
+      <div class="card mb-0 border-2 rounded-5">
         <div class="row g-0">
           <div class="card border-0 rounded-5">
             <h4 class="card-header">MY APPOINTMENTS</h4>
@@ -70,8 +69,8 @@
   </div>
 
   <div class="row">
-    <div class="cards col-12 col-lg-6 border-0">
-      <div class="card mb-3 border-2 rounded-5">
+    <div class="cards col-12 col-lg-6 border-0  rounded-5">
+      <div class="card mb-0 border-2 rounded-5">
         <div class="row g-0">
           <div class="card border-0 rounded-5">
             <h4 class="card-header">HOW I'VE BEEN FEELING</h4>

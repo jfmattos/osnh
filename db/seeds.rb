@@ -9,9 +9,11 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+puts "Creating users"
+
 User.destroy_all
 
-User.create(
+diana = User.create!(
   first_name: 'Diana',
   last_name: 'Saddi',
   cns: '701001888084297',
@@ -22,22 +24,96 @@ User.create(
   password: '123456'
 )
 
-User.create(
+john = User.create!(
   first_name: 'John',
   last_name: 'Doe',
-  cns: '701001888084293',
+  cns: '701001888084296',
   address: 'Rua X, 01, Cocotá, Rio de Janeiro - RJ, 21910-296',
-  phone_number: '(21) 99859-1279',
+  phone_number: '(21) 99959-6279',
   admin: false,
-  email: 'jd@1.com',
+  email: 'johnd@1.com',
   password: '123456'
 )
-# Resource.destroy_all
 
-Resource.destroy_all
+jane = User.create!(
+  first_name: 'Jane',
+  last_name: 'Doe',
+  cns: '701001888084295',
+  address: 'Rua X, 01, Cocotá, Rio de Janeiro - RJ, 21910-296',
+  phone_number: '(21) 98859-4279',
+  admin: false,
+  email: 'janed@1.com',
+  password: '123456'
+)
 
+mary = User.create!(
+  first_name: 'Mary',
+  last_name: 'Doe',
+  cns: '701001888084294',
+  address: 'Rua X, 01, Cocotá, Rio de Janeiro - RJ, 21910-296',
+  phone_number: '(21) 97859-6279',
+  admin: false,
+  email: 'maryd@1.com',
+  password: '123456'
+)
 
-puts "creating places"
+puts "Users created!"
+
+puts "Creating diagnoses"
+
+Diagnosis.destroy_all
+
+Diagnosis.create!(
+  disease: "Asthma",
+  medication: "budesonida and formoterol",
+  user: diana
+)
+
+Diagnosis.create!(
+  disease: "ADHD",
+  medication: "atomoxetin",
+  user: diana
+)
+
+Diagnosis.create!(
+  disease: "Anxiety",
+  medication: "Fluoxetine",
+  user: john
+)
+
+Diagnosis.create!(
+  disease: "Diabetes",
+  medication: "metformin, basal insulin and short_acting insulin",
+  user: john
+)
+
+Diagnosis.create!(
+  disease: "Hypertension",
+  medication: "Losartana, anlodipino and furosemida",
+  user: jane
+)
+
+Diagnosis.create!(
+  disease: "Depression",
+  medication: "Fluoxetina",
+  user: jane
+)
+
+Diagnosis.create!(
+  disease: "Esquizofrenia",
+  medication: "haloperidol",
+  user: mary
+)
+
+Diagnosis.create!(
+  disease: "Fibromialgia",
+  medication: "ciclobenzaprine",
+  user: mary
+)
+
+puts "Diagnoses created!"
+
+puts "Creating places"
 
 Place.destroy_all
 
@@ -110,34 +186,31 @@ Place.create!(
   opening_hours: "09:00 - 17:00",
   email: "island@forum.com",
   phone_number: "(21)3626-4700",
-  services: "Tax Enforcement, Judicial Reorganizations and Arbitration-Related Disputes, Special Civil Courts,Mediation and Conciliation."
+  services: "Tax Enforcement, Judicial Reorganizations and Arbitration-Related Disputes, Special Civil Courts, Mediation and Conciliation."
 )
 
+puts "Places created!"
 
 
-
-
-puts "places created!"
 # Resource.destroy_all
 
+# d = [
+# "Explain to me in five paragraphs the causes, symptoms, and treatments for Diabetes",
+# "Explain to me in five paragraphs the causes, symptoms, and treatments for Cardiovascular disease",
+# "Explain to me in five paragraphs the causes, symptoms, and treatments for Asthma",
+# "Explain to me in five paragraphs the causes, symptoms, and treatments for Depression",
+# "Explain to me in five paragraphs the causes, symptoms, and treatments for Anxiety"]
 
-d = [
-"Explain to me in five paragraphs the causes, symptoms, and treatments for Diabetes",
-"Explain to me in five paragraphs the causes, symptoms, and treatments for Cardiovascular disease",
-"Explain to me in five paragraphs the causes, symptoms, and treatments for Asthma",
-"Explain to me in five paragraphs the causes, symptoms, and treatments for Depression",
-"Explain to me in five paragraphs the causes, symptoms, and treatments for Anxiety"]
+# n = ["Diabetes", "Cardiovascular disease", "Asthma", "Depression", "Anxiety"]
 
-n = ["Diabetes", "Cardiovascular disease", "Asthma", "Depression", "Anxiety"]
+# d.each_with_index do |disease, index|
+#   sleep(300)
+#   client = OpenAI::Client.new
+#   chatgpt = client.chat(parameters: {
+#   model: "gpt-3.5-turbo",
+#   messages: [{ role: "user", content: disease}]
+# })
 
-d.each_with_index do |disease, index|
-  sleep(300)
-  client = OpenAI::Client.new
-  chatgpt = client.chat(parameters: {
-  model: "gpt-3.5-turbo",
-  messages: [{ role: "user", content: disease}]
-})
-
-Resource.create!(name: n[index], details: chatgpt["choices"][0]["message"]["content"])
-puts "created resource"
-end
+# Resource.create!(name: n[index], details: chatgpt["choices"][0]["message"]["content"])
+# puts "created resource"
+# end

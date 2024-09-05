@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    @my_diagnoses = current_user.diagnosis
+    @my_diagnoses = current_user.diagnoses
   end
 
   private
