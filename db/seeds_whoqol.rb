@@ -1,4 +1,6 @@
+# -----------------------------------------------------------------------------
 # Questions
+# -----------------------------------------------------------------------------
 
 whoqol = Survey.create!(
   title: "WHO: Quality of Life (WHOQOL)",
@@ -110,24 +112,28 @@ whoqol_26 = Question.create!(
   survey: whoqol
 )
 
-#
+# -----------------------------------------------------------------------------
 
-whoqol_27 = Question.create!(
-  content: 'Alguém lhe ajudou a preencher este questionário?',
-  survey: whoqol
-)
-whoqol_28 = Question.create!(
-  content: 'Quanto tempo você levou para preencher este questionário?',
-  survey: whoqol
-)
-whoqol_29 = Question.create!(
-  content: 'Você tem algum comentário sobre o questionário?',
-  survey: whoqol
-)
+# whoqol_27 = Question.create!(
+#   content: 'Alguém lhe ajudou a preencher este questionário?',
+#   survey: whoqol
+# )
+# whoqol_28 = Question.create!(
+#   content: 'Quanto tempo você levou para preencher este questionário?',
+#   survey: whoqol
+# )
+# whoqol_29 = Question.create!(
+#   content: 'Você tem algum comentário sobre o questionário?',
+#   survey: whoqol
+# )
 
+# -----------------------------------------------------------------------------
 # Answers
+# -----------------------------------------------------------------------------
 
+# -----------------------------------------------------------------------------
 # Answers for Questions 1..2
+# -----------------------------------------------------------------------------
 
 answers = [
   'MUITO RUIM',
@@ -148,7 +154,9 @@ questions.each do | question |
   end
 end
 
+# -----------------------------------------------------------------------------
 # Answers for Questions 3..9
+# -----------------------------------------------------------------------------
 
 answers = [
   'NADA',
@@ -158,18 +166,20 @@ answers = [
   'EXTREMAMENTE'
 ]
 
-question = (3..9).map { |number| "whoqol_0#{number}" }
+questions = (3..9).map { |number| "whoqol_0#{number}" }
 
 questions.each do | question |
   answers.each do | answer |
     Answer.create!(
       content: answer,
-      question: question
+      question: eval("#{question}")
     )
   end
 end
 
+# -----------------------------------------------------------------------------
 # Answers for Questions 10..14
+# -----------------------------------------------------------------------------
 
 answers = [
   'NADA',
@@ -179,18 +189,20 @@ answers = [
   'COMPLETAMENTE'
 ]
 
-question = (10..14).map { |number| "whoqol_0#{number}" }
+questions = (10..14).map { |number| "whoqol_#{number}" }
 
 questions.each do | question |
   answers.each do | answer |
     Answer.create!(
       content: answer,
-      question: question
+      question: eval("#{question}")
     )
   end
 end
 
+# -----------------------------------------------------------------------------
 # Answers for Question 15
+# -----------------------------------------------------------------------------
 
 answers = [
   'MUITO RUIM',
@@ -200,7 +212,7 @@ answers = [
   'MUITO BOM'
 ]
 
-question = [ whoqol_15 ]
+questions = [ whoqol_15 ]
 
 questions.each do | question |
   answers.each do | answer |
@@ -211,7 +223,9 @@ questions.each do | question |
   end
 end
 
+# -----------------------------------------------------------------------------
 # Answers for Questions 16..25
+# -----------------------------------------------------------------------------
 
 answers = [
   'MUITO INSATISFEITO',
@@ -221,18 +235,20 @@ answers = [
   'MUITO SATISFEITO'
 ]
 
-question = (16..25).map { |number| "whoqol_0#{number}" }
+questions = (16..25).map { |number| "whoqol_#{number}" }
 
 questions.each do | question |
   answers.each do | answer |
     Answer.create!(
       content: answer,
-      question: question
+      question: eval("#{question}")
     )
   end
 end
 
+# -----------------------------------------------------------------------------
 # Answers for Question 26
+# -----------------------------------------------------------------------------
 
 answers = [
   'NUNCA',
@@ -242,7 +258,7 @@ answers = [
   'SEMPRE'
 ]
 
-question = [ whoqol_26 ]
+questions = [ whoqol_26 ]
 
 questions.each do | question |
   answers.each do | answer |
