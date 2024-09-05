@@ -11,11 +11,11 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   resources :users, only: :show do
-    resources :appointments, only: %i[index create edit update destroy]
+    resources :appointments, only: %i[create edit update destroy]
   end
 
-  resources :appointments, only: :show
+  resources :appointments, only: %i[show index]
 
-  resources :diagnosis
+  resources :diagnoses
   resources :resources
 end

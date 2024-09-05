@@ -32,31 +32,36 @@
             <h4 class="card-header">MY HEALTH SPACE</h4>
             <div class="card-body">
               <div class="row">
-                <div class="col-8 border-0 ">
-                  <% @my_diagnoses.each do |diagnosis| %>
+                <% @my_diagnoses.each do |diagnosis| %>
                   <div>
                     <h5 class="card-title"><%= diagnosis.disease %></h5>
-                    <ul>
-                    <%# diagnosis.medication.each do |med| %>
-                      <li><%= medication %></li>
-                    <%# end %>
-                    </ul>
-                    <a href="#" class="btn btn-primary">Go to my diagnosis</a>
-                  </div>
-                  <% end %>
-                </div>
-                <div class="col-4 border-0">
-                  <strong>My appointments:</strong>
-                  <%= month_calendar(events: @appointments) do |date, appointments| %>
-                    <%= date %>
-                    <% appointments.each do |appointment| %>
-                      <div class="appointment">  <-- We will add some style to the appointment class later so let's add it now -->
-                        <p><%= appointment.name %></p>
-                      </div>
+                    <ul class="list-group">
+                    <% diagnosis.medication.each do |med| %>
+                      <li class="list-group-item">
+                      <%= medication %>
+                      </li>
                     <% end %>
-                  <% end %>
-                </div>
+                    </ul>
+                    <%= link_to "View", user_path %>
+                    <%= link_to "Remove", diagnosis_path(diagnosis),data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+                  </div>
+                <% end %>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="cards col-12 col-lg-6 border-0">
+      <div class="card mb-3 border-2 rounded-5">
+        <div class="row g-0">
+          <div class="card border-0 rounded-5">
+            <h4 class="card-header">MY APPOINTMENTS</h4>
+            <div class="card-body">
+
             </div>
           </div>
         </div>
@@ -78,20 +83,4 @@
       </div>
     </div>
   </div>
-
-  <div class="row">
-    <div class="cards col-12 col-lg-6 border-0">
-      <div class="card mb-3 border-2 rounded-5">
-        <div class="row g-0">
-          <div class="card border-0 rounded-5">
-            <h4 class="card-header">FAVORITE PLACES</h4>
-            <div class="card-body">
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
 </div>

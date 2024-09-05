@@ -53,6 +53,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_04_145758) do
   create_table "appointments", force: :cascade do |t|
     t.string "name"
     t.text "description"
+    t.date "appointment_date"
     t.datetime "start_time"
     t.datetime "end_time"
     t.bigint "user_id", null: false
