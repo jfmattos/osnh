@@ -1,0 +1,9 @@
+<div class="container">
+  <h1>Edit this dianosis</h1>
+
+  <%= render 'form', { diagnosis: @diagnosis } %>
+
+  <div>
+    <p><%= link_to "My profile", user_path(current_user), class: "btn btn-primary rounded-3" %></p>
+  </div>
+</div>
