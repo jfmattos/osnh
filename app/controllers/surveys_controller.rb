@@ -18,6 +18,7 @@ class SurveysController < ApplicationController
   end
 
   def show
+    @user_answer = UserAnswer.new
   end
 
   private

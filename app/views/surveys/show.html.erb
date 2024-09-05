@@ -13,14 +13,16 @@
 </div>
 <div class="container">
   <h2>Questions:</h2>
-      <% @survey.questions.each do |question| %>
-        <div class="card mb-4">
-          <%= question.content %>
-            <ul>
-              <% question.answers.each do |answer| %>
-                <li><%= answer.content %></li>
-              <% end %>
-            </ul>
-        </div>
-      <% end %>
+    <% @survey.questions.each do |question| %>
+      <div class="card mb-4">
+        <%= question.content %>          
+          <%= simple_form_for(@user_answer) do |f| %>
+              <%= f.association :answer, collection: question.answers,
+                                label: false,
+                                label_method: :content,
+                                as: :radio_buttons %>
+              <%= f.submit %>
+          <% end %>
+      </div>
+    <% end %>
 </div>
