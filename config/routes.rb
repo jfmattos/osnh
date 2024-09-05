@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   
   resources :surveys, only: [:index, :new, :show]
   resources :user_answers, only: [:create]
+  resources :places, only: :index
+  resources :resources
 end
