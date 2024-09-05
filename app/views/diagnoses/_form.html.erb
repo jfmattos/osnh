@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row col-12 col-lg-6 mt-3 mb-5">
+    <%= simple_form_for(diagnosis) do |f| %>
+      <div data-toggle-target="errors">
+        <%= f.error_notification %>
+      </div>
+      <%= f.input :disease %>
+      <%= f.input :medication %>
+      <%= f.button :submit, class: 'btn btn-primary rounded-3', data: { turbo: true } %>
+    <% end %>
+  </div>
+</div>

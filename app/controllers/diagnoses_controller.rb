@@ -13,8 +13,9 @@ class DiagnosesController < ApplicationController
 
   def create
     @diagnosis = Diagnosis.new(diagnosis_params)
+    @diagnosis.user_id = current_user.id
     if @diagnosis.save
-      redirect_to user_path(@user)
+      redirect_to user_path(@diagnosis.user_id)
     else
       render 'new', status: :unprocessable_entry
     end
@@ -32,17 +33,18 @@ class DiagnosesController < ApplicationController
 
   def update
     if @diagnosis.update(diagnosis_params)
-      redirect_to user_path, notice: "Diagnosis was successfully updated.", status: :see_other
+      redirect_to user_path(@diagnosis.user_id), notice: "Diagnosis was successfully updated.", status: :see_other
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
-    @diagnosis = Diagnosis.find(params[:id])
-    @diagnosis.destroy
-
-    redirect_to user_path, status: :see_other
+    if @diagnosis.destroy
+      redirect_to user_path, status: :see_other, notice: "Diagnosis was successfully destroyed."
+    else
+      render 'edit', status: :unprocessable_entity
+    end
   end
 
   private
