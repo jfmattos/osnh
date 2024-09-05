@@ -39,8 +39,7 @@ require_relative "seeds_whoqol"
 
 # require_relative "seeds_whoqol_answers"
 
-Resource.destroy_all
-
+# Resource.destroy_all
 
 puts "creating places"
 
@@ -126,23 +125,23 @@ puts "places created!"
 # Resource.destroy_all
 
 
-d = [
-"Explain to me in five paragraphs the causes, symptoms, and treatments for Diabetes",
-"Explain to me in five paragraphs the causes, symptoms, and treatments for Cardiovascular disease",
-"Explain to me in five paragraphs the causes, symptoms, and treatments for Asthma",
-"Explain to me in five paragraphs the causes, symptoms, and treatments for Depression",
-"Explain to me in five paragraphs the causes, symptoms, and treatments for Anxiety"]
+# d = [
+# "Explain to me in five paragraphs the causes, symptoms, and treatments for Diabetes",
+# "Explain to me in five paragraphs the causes, symptoms, and treatments for Cardiovascular disease",
+# "Explain to me in five paragraphs the causes, symptoms, and treatments for Asthma",
+# "Explain to me in five paragraphs the causes, symptoms, and treatments for Depression",
+# "Explain to me in five paragraphs the causes, symptoms, and treatments for Anxiety"]
 
-n = ["Diabetes", "Cardiovascular disease", "Asthma", "Depression", "Anxiety"]
+# n = ["Diabetes", "Cardiovascular disease", "Asthma", "Depression", "Anxiety"]
 
-d.each_with_index do |disease, index|
-  sleep(300)
-  client = OpenAI::Client.new
-  chatgpt = client.chat(parameters: {
-  model: "gpt-3.5-turbo",
-  messages: [{ role: "user", content: disease}]
-})
+# d.each_with_index do |disease, index|
+#   sleep(300)
+#   client = OpenAI::Client.new
+#   chatgpt = client.chat(parameters: {
+#   model: "gpt-3.5-turbo",
+#   messages: [{ role: "user", content: disease}]
+# })
 
-Resource.create!(name: n[index], details: chatgpt["choices"][0]["message"]["content"])
-puts "created resource"
-end
+# Resource.create!(name: n[index], details: chatgpt["choices"][0]["message"]["content"])
+# puts "created resource"
+# end
