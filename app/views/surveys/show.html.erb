@@ -1,28 +1,6 @@
 <div class="container">
   <h1><%= @survey.title %></h1>
 </div>
-<div class="container">
-  <h2>Interval Days:</h2>
-  <ul>
-    <% @survey.interval_days.each do |interval| %>
-      <li>
-        <%= interval %>
-      </li>
-    <% end %>
-  </ul>
-</div>
-<div class="container">
-  <h2>Questions:</h2>
-    <% @survey.questions.each do |question| %>
-      <div class="card mb-4">
-        <%= question.content %>          
-          <%= simple_form_for(@user_answer) do |f| %>
-              <%= f.association :answer, collection: question.answers,
-                                label: false,
-                                label_method: :content,
-                                as: :radio_buttons %>
-              <%= f.submit %>
-          <% end %>
-      </div>
-    <% end %>
+<div>
+  <%= link_to "Start", new_survey_user_answer_path(@survey, question_index: 0) %>
 </div>

@@ -1,21 +1,19 @@
-<%# user_answer %>
 
-<%#  <div class="container">
-  <%#  <h1><%= @survey.title %></h1>
-<%#  </div>
-<%#  
-<%#  <div class="container">
-  <%#  <h2>Questions:</h2>
-    <%#  <% @survey.questions.each do |question| %>
-      <%#  <div class="card mb-4">
-        <%#  <%= question.content %>          
-          <%#  <%= simple_form_for(@user_answer) do |f| %>
-              <%#  <%= f.association :answer, collection: question.answers,
-                                <%#  label: false,
-                                <%#  label_method: :content,
-                                <%#  as: :radio_buttons %>
-              <%#  <%= f.submit %>
-          <%#  <% end %>
-      <%#  </div>
-    <%#  <% end %>
-<%#  </div>
+<div class="container">
+  <h1><%= @survey.title %></h1>
+</div>
+
+<div class="container">
+    <div class="card mb-4">
+      <%= @question.content %>          
+        <%= simple_form_for([@survey, @user_answer]) do |f| %>
+            <%= f.association :answer, collection: @question.answers,
+                              label: false,
+                              label_method: :content,
+                              as: :radio_buttons %>
+            <%= f.submit %>
+            <%# params[:question_index]+1 %>
+            <%= f.hidden_field :question_index, value: params[:question_index].to_i+1 %>
+        <% end %>
+    </div>
+</div>
