@@ -9,11 +9,13 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-Survey.destroy_all
-
 # -----------------------------------------------------------------------------
 # SURVEYS
 # -----------------------------------------------------------------------------
+
+puts "Creating Surveys"
+
+Survey.destroy_all
 
 whodas = Survey.create!(
   title: "WHO: Disability Assesment Schedule 2.0 (WHODAS)",
@@ -25,26 +27,28 @@ sf36 = Survey.create!(
   interval_days: [90, 90, 180]
 )
 
+puts " Surveys created!"
+
 # -----------------------------------------------------------------------------
-# QUESTIONS
+# QUESTIONAIRS (QUESTIONS AND ANSWERS)
 # -----------------------------------------------------------------------------
+
+puts "Creating Questions and Answers"
+
+Question.destroy_all
+Answer.destroy_all
 
 # require_relative "seeds_sf36"
 # require_relative "seeds_whodas"
 require_relative "seeds_whoqol"
 
-# -----------------------------------------------------------------------------
-# ANSWERS
-# -----------------------------------------------------------------------------
-
-# require_relative "seeds_whoqol_answers"
-
-# Resource.destroy_all
-puts "Creating users"
+puts " Questions and Answers created!"
 
 # -----------------------------------------------------------------------------
 # USERS
 # -----------------------------------------------------------------------------
+
+puts "Creating Users"
 
 User.destroy_all
 
@@ -98,7 +102,7 @@ puts "Users created!"
 # DIAGNOSES
 # -----------------------------------------------------------------------------
 
-puts "Creating diagnoses"
+puts "Creating Diagnoses"
 
 Diagnosis.destroy_all
 
@@ -156,7 +160,8 @@ puts "Diagnoses created!"
 # PLACES
 # -----------------------------------------------------------------------------
 
-puts "Creating places"
+puts "Creating Places"
+
 Place.destroy_all
 
 Place.create!(
@@ -233,10 +238,11 @@ Place.create!(
 
 puts "Places created!"
 
-
 # -----------------------------------------------------------------------------
 # RESOURCES
 # -----------------------------------------------------------------------------
+
+# puts "Creating Resources"
 
 # Resource.destroy_all
 
@@ -258,5 +264,7 @@ puts "Places created!"
 # })
 
 # Resource.create!(name: n[index], details: chatgpt["choices"][0]["message"]["content"])
-# puts "created resource"
+# puts "Created Resource!"
 # end
+
+# puts "Resources created!"
