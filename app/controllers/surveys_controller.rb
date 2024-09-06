@@ -1,5 +1,5 @@
 class SurveysController < ApplicationController
-  before_action :set_survery, only: %i[destroy show]
+  before_action :set_survey, only: %i[show destroy]
 
   def index
     @survey = Survey.all
@@ -27,7 +27,7 @@ class SurveysController < ApplicationController
     params.require(:survey).permit(:title, :interval_days)
   end
 
-  def set_survery
+  def set_survey
     @survey = Survey.find(params[:id])
   end
 end

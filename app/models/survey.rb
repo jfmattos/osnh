@@ -1,6 +1,6 @@
 class Survey < ApplicationRecord
   has_many :questions, dependent: :destroy
-  validates :title, :interval_days, presence: true
+  # validates :title, :interval_days, presence: true
 
   # validates :interval_days, numericality: { greater_than: 0 }
   # ---------------------------------
