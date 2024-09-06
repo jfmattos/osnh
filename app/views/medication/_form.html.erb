@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row col-12 col-lg-6 mt-3 mb-5">
+    <%= simple_form_for(medication) do |f| %>
+      <div data-toggle-target="errors">
+        <%= f.error_notification %>
+      </div>
+      <div class="row g-3">
+        <div class="col">
+          <%= f.input :name, type: 'text', class: 'form-control', placeholder: 'Medication name', aria_label: 'Medication name' %>
+        </div>
+        <div class="col">
+          <%= f.input :daily_dosage, type: 'text', class: 'form-control', placeholder: 'Daily dosage', aria_label: 'Daily dosage' %>
+        </div>
+      </div>
+      <%= f.button :submit, class: 'btn btn-primary rounded-3', data: { turbo: true } %>
+    <% end %>
+  </div>
+</div>

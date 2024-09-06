@@ -65,49 +65,41 @@ Diagnosis.destroy_all
 
 Diagnosis.create!(
   disease: "Asthma",
-  medication: "budesonida and formoterol",
   user: diana
 )
 
 Diagnosis.create!(
   disease: "ADHD",
-  medication: "atomoxetin",
   user: diana
 )
 
 Diagnosis.create!(
   disease: "Anxiety",
-  medication: "Fluoxetine",
   user: john
 )
 
 Diagnosis.create!(
   disease: "Diabetes",
-  medication: "metformin, basal insulin and short_acting insulin",
   user: john
 )
 
 Diagnosis.create!(
   disease: "Hypertension",
-  medication: "Losartana, anlodipino and furosemida",
   user: jane
 )
 
 Diagnosis.create!(
   disease: "Depression",
-  medication: "Fluoxetina",
   user: jane
 )
 
 Diagnosis.create!(
   disease: "Esquizofrenia",
-  medication: "haloperidol",
   user: mary
 )
 
 Diagnosis.create!(
   disease: "Fibromialgia",
-  medication: "ciclobenzaprine",
   user: mary
 )
 
@@ -191,32 +183,29 @@ Place.create!(
 
 puts "places created!"
 
-Resource.destroy_all
+# puts "creating resources"
 
-puts "creating resources"
+# Resource.destroy_all
 
+# d = [
+# "Explain to me in five paragraphs the causes, symptoms, and treatments for Diabetes",
+# "Explain to me in five paragraphs the causes, symptoms, and treatments for Cardiovascular disease",
+# "Explain to me in five paragraphs the causes, symptoms, and treatments for Asthma",
+# "Explain to me in five paragraphs the causes, symptoms, and treatments for Depression",
+# "Explain to me in five paragraphs the causes, symptoms, and treatments for Anxiety"]
 
-Resource.destroy_all
+# n = ["Diabetes", "Cardiovascular disease", "Asthma", "Depression", "Anxiety"]
 
-d = [
-"Explain to me in five paragraphs the causes, symptoms, and treatments for Diabetes",
-"Explain to me in five paragraphs the causes, symptoms, and treatments for Cardiovascular disease",
-"Explain to me in five paragraphs the causes, symptoms, and treatments for Asthma",
-"Explain to me in five paragraphs the causes, symptoms, and treatments for Depression",
-"Explain to me in five paragraphs the causes, symptoms, and treatments for Anxiety"]
+# d.each_with_index do |disease, index|
+#   sleep(120)
+#   client = OpenAI::Client.new
+#   chatgpt = client.chat(parameters: {
+#   model: "gpt-3.5-turbo",
+#   messages: [{ role: "user", content: disease}]
+# })
 
-n = ["Diabetes", "Cardiovascular disease", "Asthma", "Depression", "Anxiety"]
+# Resource.create!(name: n[index], details: chatgpt["choices"][0]["message"]["content"])
+# puts "created resource"
+# end
 
-d.each_with_index do |disease, index|
-  sleep(120)
-  client = OpenAI::Client.new
-  chatgpt = client.chat(parameters: {
-  model: "gpt-3.5-turbo",
-  messages: [{ role: "user", content: disease}]
-})
-
-Resource.create!(name: n[index], details: chatgpt["choices"][0]["message"]["content"])
-puts "created resource"
-end
-
-puts "all resources created!"
+# puts "all resources created!"
