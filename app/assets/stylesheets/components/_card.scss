@@ -6,7 +6,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: $aqua;
+  color: $turquoise;
   font-size: 24px;
   font-weight: bold;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.05);
@@ -33,9 +33,9 @@
 }
 
 .booking-card{
-  background-color: white;
+  background-color: $offwhite;
   border-radius: 10px;
-  // border: 1px solid grey;
+  border: 1px solid grey;
   width: 510px;
   height: 200px;
   display: flex;
