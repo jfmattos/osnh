@@ -108,49 +108,41 @@ Diagnosis.destroy_all
 
 Diagnosis.create!(
   disease: "Asthma",
-  medication: "budesonida and formoterol",
   user: diana
-)  
+)
 
 Diagnosis.create!(
   disease: "ADHD",
-  medication: "atomoxetin",
   user: diana
 )
 
 Diagnosis.create!(
   disease: "Anxiety",
-  medication: "Fluoxetine",
   user: john
 )
 
 Diagnosis.create!(
   disease: "Diabetes",
-  medication: "metformin, basal insulin and short_acting insulin",
   user: john
 )
 
 Diagnosis.create!(
   disease: "Hypertension",
-  medication: "Losartana, anlodipino and furosemida",
   user: jane
 )
 
 Diagnosis.create!(
   disease: "Depression",
-  medication: "Fluoxetina",
   user: jane
 )
 
 Diagnosis.create!(
   disease: "Esquizofrenia",
-  medication: "haloperidol",
   user: mary
 )
 
 Diagnosis.create!(
   disease: "Fibromialgia",
-  medication: "ciclobenzaprine",
   user: mary
 )
 
@@ -236,7 +228,7 @@ Place.create!(
   services: "Tax Enforcement, Judicial Reorganizations and Arbitration-Related Disputes, Special Civil Courts, Mediation and Conciliation."
 )
 
-puts "Places created!"
+puts "places created!"
 
 # -----------------------------------------------------------------------------
 # RESOURCES
@@ -256,7 +248,7 @@ puts "Places created!"
 # n = ["Diabetes", "Cardiovascular disease", "Asthma", "Depression", "Anxiety"]
 
 # d.each_with_index do |disease, index|
-#   sleep(300)
+#   sleep(120)
 #   client = OpenAI::Client.new
 #   chatgpt = client.chat(parameters: {
 #   model: "gpt-3.5-turbo",

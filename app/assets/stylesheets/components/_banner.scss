@@ -2,7 +2,7 @@
   background-size: cover;
   background-position: center;
   padding: 150px 0;
-  //background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.multipure.com%2Fpurely-social%2Fscience%2Fhealthier-happier-families%2F&psig=AOvVaw0n3oS_1Tx5QywXbFkGIkAy&ust=1725560343744000&source=images&cd=vfe&opi=89978449&ved=2ahUKEwjs3vGr86mIAxVSFFkFHYHqAXAQjRx6BAgAEBg");
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), asset-url("quality-of-life.png");
   margin-bottom: 10px;
   border-radius: 5px;
 }
@@ -10,7 +10,7 @@
 .banner h1 {
   margin: 1;
   color: rgb(255, 255, 255);
-  //text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   font-size: 48px;
   font-weight: bold;
   text-align: center;

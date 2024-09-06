@@ -1,0 +1,12 @@
+<div class="row nested-fields g-3">
+  <%= form_with(model: medication) do |f| %>
+  <div class="col">
+    <%= f.input :name, type: 'text', class: 'form-control', placeholder: 'Medication name', aria_label: 'Medication name' %>
+  </div>
+  <div class="col">
+    <%= f.input :daily_dosage, type: 'text', class: 'form-control', placeholder: 'Daily dosage', aria_label: 'Daily dosage' %>
+  </div>
+  <%= f.button :submit "Add medication" %>
+  <%= link_to_remove_association 'Remove medication', f %>
+  <% end %>
+</div>
