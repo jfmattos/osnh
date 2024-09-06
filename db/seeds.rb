@@ -88,13 +88,11 @@ Place.create!(
   services: "Tax Enforcement, Judicial Reorganizations and Arbitration-Related Disputes, Special Civil Courts,Mediation and Conciliation."
 )
 
-
-
-
-
 puts "places created!"
-# Resource.destroy_all
 
+Resource.destroy_all
+
+puts "creating resources"
 
 d = [
 "Explain to me in five paragraphs the causes, symptoms, and treatments for Diabetes",
@@ -106,7 +104,7 @@ d = [
 n = ["Diabetes", "Cardiovascular disease", "Asthma", "Depression", "Anxiety"]
 
 d.each_with_index do |disease, index|
-  sleep(300)
+  sleep(120)
   client = OpenAI::Client.new
   chatgpt = client.chat(parameters: {
   model: "gpt-3.5-turbo",
@@ -116,3 +114,5 @@ d.each_with_index do |disease, index|
 Resource.create!(name: n[index], details: chatgpt["choices"][0]["message"]["content"])
 puts "created resource"
 end
+
+puts "resources created!"
