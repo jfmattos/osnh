@@ -10,9 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_03_201844) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_06_111459) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.string "service_name", null: false
+    t.bigint "byte_size", null: false
+    t.string "checksum"
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "active_storage_variant_records", force: :cascade do |t|
+    t.bigint "blob_id", null: false
+    t.string "variation_digest", null: false
+    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
 
   create_table "answers", force: :cascade do |t|
     t.string "content"
@@ -22,13 +50,33 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_03_201844) do
     t.index ["question_id"], name: "index_answers_on_question_id"
   end
 
+  create_table "appointments", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.date "appointment_date"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_appointments_on_user_id"
+  end
+
   create_table "diagnoses", force: :cascade do |t|
     t.string "disease"
-    t.string "medication"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_diagnoses_on_user_id"
+  end
+
+  create_table "medications", force: :cascade do |t|
+    t.string "name"
+    t.string "daily_dosage"
+    t.bigint "diagnosis_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["diagnosis_id"], name: "index_medications_on_diagnosis_id"
   end
 
   create_table "places", force: :cascade do |t|
@@ -61,7 +109,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_03_201844) do
 
   create_table "surveys", force: :cascade do |t|
     t.string "title"
-    t.integer "interval_days"
+    t.integer "interval_days", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -84,12 +132,22 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_03_201844) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "cns"
+    t.string "address"
+    t.string "phone_number"
+    t.boolean "admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "answers", "questions"
+  add_foreign_key "appointments", "users"
   add_foreign_key "diagnoses", "users"
+  add_foreign_key "medications", "diagnoses"
   add_foreign_key "questions", "surveys"
   add_foreign_key "user_answers", "answers"
   add_foreign_key "user_answers", "users"

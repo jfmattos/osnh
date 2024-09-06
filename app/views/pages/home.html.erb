@@ -1,2 +1,19 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container mt-4">
+
+  <div class="banner">
+  </div>
+
+  <div class="row g-0">
+    <div class="cards col-12 col-lg-6 border-0 rounded-5">
+      <div class="row g-0">
+        <div class="row pt-5 pb-5">
+          <div class="button_links d-flex justify-content-evenly">
+            <%= link_to "My profile", user_path(@user), class: "btn btn-primary" %>
+            <%= link_to "Places", places_path(@places), class: "btn btn-primary" %>
+            <%= link_to "Surveys", surveys_path(@surveys), class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

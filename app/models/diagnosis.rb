@@ -1,4 +1,6 @@
 class Diagnosis < ApplicationRecord
   belongs_to :user
-  validates :disease, :medication, presence: true
+  has_many :Medication
+
+  validates :disease, presence: true
 end

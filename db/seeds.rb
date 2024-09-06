@@ -9,10 +9,150 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-Resource.destroy_all
+# -----------------------------------------------------------------------------
+# SURVEYS
+# -----------------------------------------------------------------------------
 
+puts "Creating Surveys"
 
-puts "creating places"
+Survey.destroy_all
+
+whodas = Survey.create!(
+  title: "WHO: Disability Assesment Schedule 2.0 (WHODAS)",
+  interval_days: [90, 90, 180]
+)
+
+sf36 = Survey.create!(
+  title: "SF-36",
+  interval_days: [90, 90, 180]
+)
+
+puts " Surveys created!"
+
+# -----------------------------------------------------------------------------
+# QUESTIONAIRS (QUESTIONS AND ANSWERS)
+# -----------------------------------------------------------------------------
+
+puts "Creating Questions and Answers"
+
+Question.destroy_all
+Answer.destroy_all
+
+# require_relative "seeds_sf36"
+# require_relative "seeds_whodas"
+require_relative "seeds_whoqol"
+
+puts " Questions and Answers created!"
+
+# -----------------------------------------------------------------------------
+# USERS
+# -----------------------------------------------------------------------------
+
+puts "Creating Users"
+
+User.destroy_all
+
+diana = User.create!(
+  first_name: 'Diana',
+  last_name: 'Saddi',
+  cns: '701001888084297',
+  address: 'Parque Poeta Manuel Bandeira, S/N - Cocotá, Rio de Janeiro - RJ, 21910-296',
+  phone_number: '(21) 99845-2252',
+  admin: true,
+  email: 'dianasaddi@gmail.com',
+  password: '123456'
+)
+
+john = User.create!(
+  first_name: 'John',
+  last_name: 'Doe',
+  cns: '701001888084296',
+  address: 'Rua X, 01, Cocotá, Rio de Janeiro - RJ, 21910-296',
+  phone_number: '(21) 99959-6279',
+  admin: false,
+  email: 'johnd@1.com',
+  password: '123456'
+)
+
+jane = User.create!(
+  first_name: 'Jane',
+  last_name: 'Doe',
+  cns: '701001888084295',
+  address: 'Rua X, 01, Cocotá, Rio de Janeiro - RJ, 21910-296',
+  phone_number: '(21) 98859-4279',
+  admin: false,
+  email: 'janed@1.com',
+  password: '123456'
+)
+
+mary = User.create!(
+  first_name: 'Mary',
+  last_name: 'Doe',
+  cns: '701001888084294',
+  address: 'Rua X, 01, Cocotá, Rio de Janeiro - RJ, 21910-296',
+  phone_number: '(21) 97859-6279',
+  admin: false,
+  email: 'maryd@1.com',
+  password: '123456'
+)
+
+puts "Users created!"
+
+# -----------------------------------------------------------------------------
+# DIAGNOSES
+# -----------------------------------------------------------------------------
+
+puts "Creating Diagnoses"
+
+Diagnosis.destroy_all
+
+Diagnosis.create!(
+  disease: "Asthma",
+  user: diana
+)
+
+Diagnosis.create!(
+  disease: "ADHD",
+  user: diana
+)
+
+Diagnosis.create!(
+  disease: "Anxiety",
+  user: john
+)
+
+Diagnosis.create!(
+  disease: "Diabetes",
+  user: john
+)
+
+Diagnosis.create!(
+  disease: "Hypertension",
+  user: jane
+)
+
+Diagnosis.create!(
+  disease: "Depression",
+  user: jane
+)
+
+Diagnosis.create!(
+  disease: "Esquizofrenia",
+  user: mary
+)
+
+Diagnosis.create!(
+  disease: "Fibromialgia",
+  user: mary
+)
+
+puts "Diagnoses created!"
+
+# -----------------------------------------------------------------------------
+# PLACES
+# -----------------------------------------------------------------------------
+
+puts "Creating Places"
 
 Place.destroy_all
 
@@ -85,35 +225,38 @@ Place.create!(
   opening_hours: "09:00 - 17:00",
   email: "island@forum.com",
   phone_number: "(21)3626-4700",
-  services: "Tax Enforcement, Judicial Reorganizations and Arbitration-Related Disputes, Special Civil Courts,Mediation and Conciliation."
+  services: "Tax Enforcement, Judicial Reorganizations and Arbitration-Related Disputes, Special Civil Courts, Mediation and Conciliation."
 )
 
-
-
-
-
 puts "places created!"
+
+# -----------------------------------------------------------------------------
+# RESOURCES
+# -----------------------------------------------------------------------------
+
+# puts "Creating Resources"
+
 # Resource.destroy_all
 
+# d = [
+# "Explain to me in five paragraphs the causes, symptoms, and treatments for Diabetes",
+# "Explain to me in five paragraphs the causes, symptoms, and treatments for Cardiovascular disease",
+# "Explain to me in five paragraphs the causes, symptoms, and treatments for Asthma",
+# "Explain to me in five paragraphs the causes, symptoms, and treatments for Depression",
+# "Explain to me in five paragraphs the causes, symptoms, and treatments for Anxiety"]
 
-d = [
-"Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Diabetes",
-"Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Cardiovascular disease",
-"Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Asthma",
-"Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Depression",
-"Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Anxiety",
-"Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Bipolar"]
+# d = [
+# "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Diabetes",
+# "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Cardiovascular disease",
+# "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Asthma",
+# "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Depression",
+# "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Anxiety",
+# "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Bipolar"]
 
-n = ["Diabetes", "Cardiovascular disease", "Asthma", "Depression", "Anxiety", "Bipolar"]
+# n = ["Diabetes", "Cardiovascular disease", "Asthma", "Depression", "Anxiety", "Bipolar"]
 
-d.each_with_index do |disease, index|
-  sleep(300)
-  client = OpenAI::Client.new
-  chatgpt = client.chat(parameters: {
-  model: "gpt-3.5-turbo",
-  messages: [{ role: "user", content: disease}]
-})
+# Resource.create!(name: n[index], details: chatgpt["choices"][0]["message"]["content"])
+# puts "Created Resource!"
+# end
 
-Resource.create!(name: n[index], details: chatgpt["choices"][0]["message"]["content"])
-puts "created resource"
-end
+# puts "Resources created!"

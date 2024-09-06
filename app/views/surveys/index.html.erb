@@ -1,0 +1,17 @@
+<div class="row g-0">
+    <div class="cards col-12 col-lg-6 border-0 rounded-5">
+      <div class="row g-0">
+        <div class="row pt-5 pb-5">
+          <div class="button_links d-flex justify-content-evenly">
+            <ul>
+              <% @survey.each do |survey| %>
+                <li>
+                  <%= link_to survey.title, survey_path(survey), class: "btn btn-primary" %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
