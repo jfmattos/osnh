@@ -11,5 +11,12 @@ Rails.application.routes.draw do
   # root "posts#index"
   resources :places, only: :index
 
+  resources :users, only: :show do
+    resources :appointments, only: %i[create edit update destroy]
+  end
+
+  resources :appointments, only: %i[show index]
+
+  resources :diagnoses
   resources :resources
 end
