@@ -1,0 +1,6 @@
+<div class="container">
+  <h1><%= @survey.title %></h1>
+</div>
+<div>
+  <%= link_to "Start", new_survey_user_answer_path(@survey, question_index: 0) %>
+</div>
