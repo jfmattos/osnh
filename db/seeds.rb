@@ -156,12 +156,10 @@ puts "Diagnoses created!"
 # PLACES
 # -----------------------------------------------------------------------------
 
-Place.create!(
-
 puts "Creating places"
-
 Place.destroy_all
 
+Place.create!(
   name: "Fitness Place",
   address: "R. Cap. Barbosa, 871 - Cocotá, Rio de Janeiro",
   opening_hours: "05:30 - 23:00",
