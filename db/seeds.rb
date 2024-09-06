@@ -245,15 +245,15 @@ puts "places created!"
 # "Explain to me in five paragraphs the causes, symptoms, and treatments for Depression",
 # "Explain to me in five paragraphs the causes, symptoms, and treatments for Anxiety"]
 
-# n = ["Diabetes", "Cardiovascular disease", "Asthma", "Depression", "Anxiety"]
+# d = [
+# "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Diabetes",
+# "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Cardiovascular disease",
+# "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Asthma",
+# "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Depression",
+# "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Anxiety",
+# "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Bipolar"]
 
-# d.each_with_index do |disease, index|
-#   sleep(120)
-#   client = OpenAI::Client.new
-#   chatgpt = client.chat(parameters: {
-#   model: "gpt-3.5-turbo",
-#   messages: [{ role: "user", content: disease}]
-# })
+# n = ["Diabetes", "Cardiovascular disease", "Asthma", "Depression", "Anxiety", "Bipolar"]
 
 # Resource.create!(name: n[index], details: chatgpt["choices"][0]["message"]["content"])
 # puts "Created Resource!"
