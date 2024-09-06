@@ -340,7 +340,7 @@ DEPENDENCIES
   sassc-rails
   selenium-webdriver
   simple_calendar (~> 2.4)
-  simple_form!
+  simple_form (~> 5.2)!
   sprockets-rails
   stimulus-rails
   turbo-rails

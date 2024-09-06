@@ -1,6 +1,5 @@
 class SurveysController < ApplicationController
   before_action :set_survery, only: %i[destroy show]
-  skip_before_action :authenticate_user!, only: [:index, :new, :create, :destroy, :show]
 
   def index
     @survey = Survey.all

@@ -138,11 +138,11 @@ whoqol_26 = Question.create!(
 # -----------------------------------------------------------------------------
 
 answers = [
-  'MUITO RUIM',
-  'RUIM',
-  'NEM RUIM NEM BOA',
-  'BOA',
-  'MUITO BOA'
+  'Muito ruim',
+  'Ruim',
+  'Nem ruim, nem boa',
+  'Boa',
+  'Muito boa'
 ]  
 
 questions = [ whoqol_01, whoqol_02 ]
@@ -161,11 +161,11 @@ end
 # -----------------------------------------------------------------------------
 
 answers = [
-  'NADA',
-  'MUITO POUCO',
-  'MAIS OU MENOS',
-  'BASTANTE',
-  'EXTREMAMENTE'
+  'Nada',
+  'Muito pouco',
+  'Mais ou menos',
+  'Bastante',
+  'Extremamente'
 ]
 
 questions = (3..9).map { |number| "whoqol_0#{number}" }
@@ -184,11 +184,11 @@ end
 # -----------------------------------------------------------------------------
 
 answers = [
-  'NADA',
-  'MUITO POUCO',
-  'MÉDIO',
-  'MUITO',
-  'COMPLETAMENTE'
+  'Nada',
+  'Muito pouco',
+  'Médio',
+  'Muito',
+  'Completamente'
 ]
 
 questions = (10..14).map { |number| "whoqol_#{number}" }
@@ -207,11 +207,11 @@ end
 # -----------------------------------------------------------------------------
 
 answers = [
-  'MUITO RUIM',
-  'RUIM',
-  'NEM RUIM NEM BOM',
-  'BOM',
-  'MUITO BOM'
+  'Muito ruim',
+  'Ruim',
+  'Nem ruim nem bom',
+  'Bom',
+  'Muito bom'
 ]
 
 questions = [ whoqol_15 ]
@@ -230,11 +230,11 @@ end
 # -----------------------------------------------------------------------------
 
 answers = [
-  'MUITO INSATISFEITO',
-  'INSATISFEITO',
-  'NEM SATISFEITO NEM INSATISFEITO',
-  'SATISFEITO',
-  'MUITO SATISFEITO'
+  'Muito insatisfeito',
+  'Insatisfeito',
+  'Nem satisfeito nem insatisfeito',
+  'Satisfeito',
+  'Muito satisfeito'
 ]
 
 questions = (16..25).map { |number| "whoqol_#{number}" }
@@ -253,11 +253,11 @@ end
 # -----------------------------------------------------------------------------
 
 answers = [
-  'NUNCA',
-  'ALGUMAS VEZES',
-  'FREQUENTEMENTE',
-  'MUITO FREQUENTEMENTE',
-  'SEMPRE'
+  'Nunca',
+  'Algumas vezes',
+  'Frequentemente',
+  'Muito frequentemente',
+  'Sempre'
 ]
 
 questions = [ whoqol_26 ]
