@@ -6,7 +6,7 @@
             <ul>
               <% @survey.each do |survey| %>
                 <li>
-                  <%= link_to survey.title, survey_path(@survey), class: "btn btn-primary" %>
+                  <%= link_to survey.title, survey_path(survey), class: "btn btn-primary" %>
                 </li>
               <% end %>
             </ul>
