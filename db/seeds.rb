@@ -9,7 +9,46 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-puts "Creating users"
+# -----------------------------------------------------------------------------
+# SURVEYS
+# -----------------------------------------------------------------------------
+
+puts "Creating Surveys"
+
+Survey.destroy_all
+
+whodas = Survey.create!(
+  title: "WHO: Disability Assesment Schedule 2.0 (WHODAS)",
+  interval_days: [90, 90, 180]
+)
+
+sf36 = Survey.create!(
+  title: "SF-36",
+  interval_days: [90, 90, 180]
+)
+
+puts " Surveys created!"
+
+# -----------------------------------------------------------------------------
+# QUESTIONAIRS (QUESTIONS AND ANSWERS)
+# -----------------------------------------------------------------------------
+
+puts "Creating Questions and Answers"
+
+Question.destroy_all
+Answer.destroy_all
+
+# require_relative "seeds_sf36"
+# require_relative "seeds_whodas"
+require_relative "seeds_whoqol"
+
+puts " Questions and Answers created!"
+
+# -----------------------------------------------------------------------------
+# USERS
+# -----------------------------------------------------------------------------
+
+puts "Creating Users"
 
 User.destroy_all
 
@@ -59,7 +98,11 @@ mary = User.create!(
 
 puts "Users created!"
 
-puts "Creating diagnoses"
+# -----------------------------------------------------------------------------
+# DIAGNOSES
+# -----------------------------------------------------------------------------
+
+puts "Creating Diagnoses"
 
 Diagnosis.destroy_all
 
@@ -67,7 +110,7 @@ Diagnosis.create!(
   disease: "Asthma",
   medication: "budesonida and formoterol",
   user: diana
-)
+)  
 
 Diagnosis.create!(
   disease: "ADHD",
@@ -113,7 +156,11 @@ Diagnosis.create!(
 
 puts "Diagnoses created!"
 
-puts "Creating places"
+# -----------------------------------------------------------------------------
+# PLACES
+# -----------------------------------------------------------------------------
+
+puts "Creating Places"
 
 Place.destroy_all
 
@@ -191,6 +238,11 @@ Place.create!(
 
 puts "Places created!"
 
+# -----------------------------------------------------------------------------
+# RESOURCES
+# -----------------------------------------------------------------------------
+
+# puts "Creating Resources"
 
 # Resource.destroy_all
 
@@ -212,5 +264,7 @@ puts "Places created!"
 # })
 
 # Resource.create!(name: n[index], details: chatgpt["choices"][0]["message"]["content"])
-# puts "created resource"
+# puts "Created Resource!"
 # end
+
+# puts "Resources created!"
