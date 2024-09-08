@@ -7,10 +7,8 @@
       <%= f.input :disease %>
       <h3>Medications</h3>
       <div class="row" id="medications">
-        <%= f.simple_fields_for(:medications) do |medication| %>
-          <%= render 'medication_fields', f: medication %>
-          <%= lisk_to_add_association 'add medication', f, :medications %>
-        <% end  %>
+        <%= render 'medication_fields', f: :medication %>
+        <%= link_to_add_association 'add medication', f, :medications %>
       </div>
       <%= f.submit :create, class: 'btn btn-primary rounded-3', data: { turbo: true } %>
     <% end %>

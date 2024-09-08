@@ -26,12 +26,6 @@ class DiagnosesController < ApplicationController
     @diagnosis = Diagnosis.new
     @diagnoses = Diagnosis.all
     @my_diagnoses = current_user.diagnoses
-
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @diagnosis }
-    end
   end
 
   def edit
@@ -61,6 +55,6 @@ class DiagnosesController < ApplicationController
   end
 
   def diagnosis_params
-    params.require(:diagnosis).permit(:disease, medications_attributes: %i[id name daily_dosage _destroy])
+    params.require(:diagnosis).permit(:disease, medication_attributes: %i[diagnosis_id name daily_dosage _destroy])
   end
 end
