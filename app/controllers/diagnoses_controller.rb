@@ -1,6 +1,6 @@
 class DiagnosesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_diagnosis, only: %i[edit update destroy]
+  before_action :set_diagnosis, only: %i[show edit update destroy]
 
   def index
     @diagnoses = Diagnosis.all
@@ -9,6 +9,7 @@ class DiagnosesController < ApplicationController
 
   def new
     @diagnosis = Diagnosis.new
+    @medication = Medication.new
   end
 
   def create
@@ -25,10 +26,16 @@ class DiagnosesController < ApplicationController
     @diagnosis = Diagnosis.new
     @diagnoses = Diagnosis.all
     @my_diagnoses = current_user.diagnoses
+
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @diagnosis }
+    end
   end
 
   def edit
-
+    @medication = Medication.new
   end
 
   def update
@@ -54,6 +61,6 @@ class DiagnosesController < ApplicationController
   end
 
   def diagnosis_params
-    params.require(:diagnosis).permit(:disease, :medication)
+    params.require(:diagnosis).permit(:disease, medications_attributes: %i[id name daily_dosage _destroy])
   end
 end

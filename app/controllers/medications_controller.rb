@@ -8,7 +8,7 @@ class MedicationController < ApplicationController
   end
 
   def create
-    @medication = Medication.create! medication_params
+    @medication = Medication.new(medication_params)
     if @medication.save
       redirect_to edit_diagnosis_path(@medication.diagnosis_id), notice: "Medication was successfully added.", status: :see_other
     else
@@ -21,7 +21,6 @@ class MedicationController < ApplicationController
   end
 
   def update
-    @medication.update! medication_params
     if @medication.update(medication_params)
       redirect_to edit_diagnosis_path(@medication.diagnosis_id), notice: "Medication was successfully updated.", status: :see_other
     else
@@ -30,7 +29,6 @@ class MedicationController < ApplicationController
   end
 
   def destroy
-    @medication.destroy!
     if @medication.destroy
       redirect_to edit_diagnosis_path, status: :see_other, notice: "Medication was successfully destroyed."
     else
