@@ -1,6 +1,6 @@
 class DiagnosesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_diagnosis, only: %i[edit destroy]
+  before_action :set_diagnosis, only: %i[edit update destroy]
 
   def index
     @diagnoses = Diagnosis.all
@@ -49,6 +49,6 @@ class DiagnosesController < ApplicationController
   end
 
   def diagnosis_params
-    params.require(:diagnosis).permit(:disease, medications_attributes: %i[id name daily_dosage])
+    params.require(:diagnosis).permit(:disease, medications_attributes: %i[id name daily_dosage _destroy])
   end
 end

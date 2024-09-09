@@ -51,8 +51,8 @@
                     </div>
                     <div class="row d-flex justify-content-end p-4">
                     <div class="button-links">
-                      <%= link_to "Edit", edit_diagnosis_path(diagnosis), class:"btn btn-primary rounded-3" %>
-                      <%= link_to "Delete", diagnosis_path(diagnosis), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-primary rounded-3" %>
+                      <%= link_to "Edit", edit_diagnosis_path(diagnosis.id), class:"btn btn-primary rounded-3" %>
+                      <%= link_to "Delete", diagnosis_path(diagnosis.id), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-primary rounded-3" %>
                     </div>
                   </div>
                   </div>
