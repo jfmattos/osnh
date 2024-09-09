@@ -39,18 +39,28 @@
                 <div class="card rounded-5 m-2">
                   <div class="card-header text-uppercase rounded-5"><strong><%= diagnosis.disease %></strong></div>
                   <div class="card-body">
-                    <%# <p class="fw-3 mb-0 text-uppercase"><%= diagnosis.medication </p> %>
-                    <%= @my_medications.each do |medication| %>
-                      <ul>
-                        <li><%= medication %></li>
-                      </ul>
-                    <% end %>
+                    <div class="row d-flex justify-content-end p-4">
+                      <%= @my_medications.each do |medication| %>
+                        <div class="col-6 col-lg-3 border-0-rounded-5">
+                          <strong><%= medication.name %></strong>
+                        </div>
+                        <div class="col-6 col-lg-3 border-0-rounded-5">
+                          <p><%= medication.daily_dosage %></p>
+                        </div>
+                      <% end %>
+                    </div>
+                    <div class="row d-flex justify-content-end p-4">
+                    <div class="button-links">
+                      <%= link_to "Edit", edit_diagnosis_path(diagnosis), class:"btn btn-primary rounded-3" %>
+                      <%= link_to "Delete", diagnosis_path(diagnosis), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-primary rounded-3" %>
+                    </div>
+                  </div>
                   </div>
                 </div>
               <% end %>
               <div class="row d-flex justify-content-end p-4">
                 <div class="button-links">
-                  <%= link_to "Edit", diagnoses_path, class:"btn btn-primary rounded-3" %>
+                  <%= link_to "Add diagnosis", new_diagnosis_path, class:"btn btn-primary rounded-3" %>
                 </div>
               </div>
             </div>

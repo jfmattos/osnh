@@ -1,7 +1,8 @@
 class Diagnosis < ApplicationRecord
   belongs_to :user
-  has_many :medications
+  has_many :medications, inverse_of: :diagnosis
 
-  accepts_nested_attributes_for :medications, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :medications, allow_destroy: true, reject_if: :all_blank
+
   validates :disease, presence: true
 end
