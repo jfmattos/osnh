@@ -49,6 +49,6 @@ class DiagnosesController < ApplicationController
   end
 
   def diagnosis_params
-    params.require(:diagnosis).permit(:disease, :medication, medications_attributes: %i[diagnosis_id name daily_dosage _destroy])
+    params.require(:diagnosis).permit(:disease, medications_attributes: %i[id name daily_dosage _destroy])
   end
 end
