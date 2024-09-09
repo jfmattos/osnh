@@ -54,6 +54,7 @@ gem 'cloudinary'
 gem "simple_calendar", "~> 2.4"
 gem "geocoder"
 gem "pg_search"
+gem 'activeadmin'
 
 group :development, :test do
   gem "dotenv-rails"
