@@ -2,10 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    @diagnoses = Diagnosis.all
-    @diagnosis = Diagnosis.new
     @my_diagnoses = current_user.diagnoses
-    @my_medications = @diagnosis.medications
   end
 
   private

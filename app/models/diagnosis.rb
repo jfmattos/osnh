@@ -1,6 +1,6 @@
 class Diagnosis < ApplicationRecord
   belongs_to :user
-  has_many :medications,  dependent: :destroy
+  has_many :medications, dependent: :destroy
 
   accepts_nested_attributes_for :medications, allow_destroy: true, reject_if: :all_blank
 
