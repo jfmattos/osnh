@@ -22,9 +22,12 @@ Rails.application.routes.draw do
 
   resources :appointments, only: %i[show index]
 
-  resources :diagnoses do
-    resources :medication, only: %i[create edit destroy]
+  resources :diagnoses, only: %i[index new edit update] do
+    resources :medication, only: %i[new create edit update destroy]
   end
+
+  resources :diagnoses, only: %i[show create destroy]
+
 
   resources :resources
 end

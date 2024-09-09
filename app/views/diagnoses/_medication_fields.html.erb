@@ -1,23 +1,11 @@
-<div class="nested-fields row g-3">
-  <%= simple_fields_for(@medication) do |f| %>
+<div class="nested-fields">
+  <%= simple_fields_for(@medications) do |f| %>
     <fieldset>
       <%= f.input :name %>
       <%= f.input :daily_dosage %>
-      <%= link_to_remove_association f do %>
-        Delete
-      <% end %>
+      <%# link_to_remove_association f do %>
+        <%# Delete %>
+      <%# end %>
     </fieldset>
   <% end %>
 </div>
-
-
-<%# <%= simple_form_for(@medication) do |f| %>
-  <%# <div class="col"> %>
-    <%# <%= f.input :name, type: 'text', class: 'form-control', placeholder: 'Medication name', aria_label: 'Medication name' %>
-  <%# </div> %>
-  <%# <div class="col"> %>
-    <%# <%= f.input :daily_dosage, type: 'text', class: 'form-control', placeholder: 'Daily dosage', aria_label: 'Daily dosage' %>
-  <%# </div> %>
-  <%# <%= f.button :submit, class: 'btn btn-primary my-custom-class', data: { turbo: true } %>
-  <%# <%= link_to_remove_association 'Remove medication', f %>
-<%# <% end %>

@@ -8,7 +8,9 @@
       <h3>Medications</h3>
       <div class="row" id="medications">
         <%= render 'medication_fields', f: :medication %>
-        <%= link_to_add_association 'add medication', f, :medications %>
+        <%# link_to_add_association 'Add medication', f, :medications do %>
+          <%# Medication %>
+        <%# end %>
       </div>
       <%= f.submit :create, class: 'btn btn-primary rounded-3', data: { turbo: true } %>
     <% end %>

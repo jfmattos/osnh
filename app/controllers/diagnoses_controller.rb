@@ -1,6 +1,6 @@
 class DiagnosesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_diagnosis, only: %i[show edit update destroy]
+  before_action :set_diagnosis, only: %i[show edit destroy]
 
   def index
     @diagnoses = Diagnosis.all
@@ -12,24 +12,18 @@ class DiagnosesController < ApplicationController
     @medication = Medication.new
   end
 
+  def edit
+
+  end
+
   def create
     @diagnosis = Diagnosis.new(diagnosis_params)
     @diagnosis.user_id = current_user.id
     if @diagnosis.save
-      redirect_to user_path(@diagnosis.user_id)
+      redirect_to user_path(@diagnosis.user_id), notice: "Diagnosis was successfully created.", status: :see_other
     else
       render 'new', status: :unprocessable_entry
     end
-  end
-
-  def show
-    @diagnosis = Diagnosis.new
-    @diagnoses = Diagnosis.all
-    @my_diagnoses = current_user.diagnoses
-  end
-
-  def edit
-    @medication = Medication.new
   end
 
   def update
@@ -55,6 +49,6 @@ class DiagnosesController < ApplicationController
   end
 
   def diagnosis_params
-    params.require(:diagnosis).permit(:disease, medication_attributes: %i[diagnosis_id name daily_dosage _destroy])
+    params.require(:diagnosis).permit(:disease, :medication, medications_attributes: %i[diagnosis_id name daily_dosage _destroy])
   end
 end
