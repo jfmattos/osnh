@@ -9,6 +9,7 @@ class DiagnosesController < ApplicationController
 
   def new
     @diagnosis = Diagnosis.new
+    @my_diagnoses = current_user.diagnoses
     @diagnosis.medications.build
   end
 
