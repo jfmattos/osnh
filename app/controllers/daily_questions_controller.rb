@@ -1,0 +1,2 @@
+class DailyQuestionsController < ApplicationController
+end

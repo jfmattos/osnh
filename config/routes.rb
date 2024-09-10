@@ -27,4 +27,5 @@ Rails.application.routes.draw do
   end
 
   resources :resources
+  resources :daily_questions, only: %i[new create]
 end
