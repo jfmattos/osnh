@@ -1,12 +1,14 @@
-<%= simple_form_for(diagnosis, data: {controller: "nested-input"}) do |f| %>
+<%= simple_form_for(diagnosis, data: {controller: "nested-input", nested_input_medication_id_value: Medication.last.id}) do |f| %>
   <h3>Disease</h3>
   <%= f.input :disease, label: false %>
   <h3>Medications</h3>
   <div class="row" data-nested-input-target="medList">
     <%= render 'medication_input', { diagnosis: @diagnosis, f: f } %>
   </div>
-  <div class="row">
-    <a href="#" class="btn btn-outline-primary" data-action="click->nested-input#add"><i class="fa-solid fa-square-plus"></i></a>
+  <div class="col-4 align-self-end">
+    <div class="card mb-0 border-0 rounded-5 justify-content-center">
+      <a href="#" class="btn btn-outline-primary border-0 rounded-3" data-action="click->nested-input#add">New Medication <i class="fa-solid fa-square-plus"></i></a>
+    </div>
   </div>
   <div class="card mb-0 border-0 rounded-5 justify-content-center">
     <%= f.submit :Submit, class: 'btn btn-primary rounded-3', data: { turbo: true } %>

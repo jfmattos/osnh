@@ -3,7 +3,11 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="nested-input"
 export default class extends Controller {
   static targets = ['medFields', 'medList']
+  static values = {
+    medicationId: Number
+  }
   connect() {
+
   };
 
   add(event) {
@@ -20,6 +24,8 @@ export default class extends Controller {
       input.id = newId
       input.value = ""
     });
+    const last_element = inputs[inputs.length - 1];
+    last_element.value = this.medicationIdValue
     this.medListTarget.appendChild(clone)
   }
 
