@@ -21,4 +21,6 @@ ActiveAdmin.register AdminUser do
     f.actions
   end
 
+  menu false
+
 end

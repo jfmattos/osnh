@@ -43,5 +43,4 @@ ActiveAdmin.register Place do
     end
   end
 
-
 end

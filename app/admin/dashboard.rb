@@ -22,16 +22,6 @@ ActiveAdmin.register_page "Dashboard" do
           end
         end
       end
-
-    #   column do
-    #     panel "Info" do
-    #       para "Welcome to ActiveAdmin."
-    #     end
-    #   end
     end
-  end # content
-end
-
-ActiveAdmin.setup do |config|
-  config.comments = false
+  end 
 end
