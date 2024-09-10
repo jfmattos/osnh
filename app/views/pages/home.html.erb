@@ -1,14 +1,21 @@
-<div class="container mt-4">
-
-  <div class="banner">
+<div class="banner" min-height= 100%; border-radius-xl; style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(https://res.cloudinary.com/dxmscduce/image/upload/v1725649741/rio_aerial_i1s6kh.avif);">
+  <div class="container">
+    <h1><strong>Our</strong> Space and Health</h1>
+      <p>Take control of your health and your life</p>
+      <div class="button">
+        <%= link_to "Sign up", "/users/sign_up", class: "btn btn-primary" %>
+      </div>
   </div>
+</div>
+
+
+<div class="container mt-4">
 
   <div class="row g-0">
     <div class="cards col-12 col-lg-6 border-0 rounded-5">
       <div class="row g-0">
         <div class="row pt-5 pb-5">
           <div class="button_links d-flex justify-content-evenly">
-            <%= link_to "My profile", user_path(@user), class: "btn btn-primary" %>
             <%= link_to "Places", places_path(@places), class: "btn btn-primary" %>
             <%= link_to "Surveys", surveys_path(@surveys), class: "btn btn-primary" %>
             <%= link_to "Resources", resources_path(@resources), class: "btn btn-primary" %>
@@ -16,5 +23,15 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+
+<div class="footer">
+  <div class="card-category">
+    <h3>Additonal resources</h3>
+    <a href = "https://www.mayoclinic.org/diseases-conditions">Mayo Clinic</a>
+    <a href = "https://www.webmd.com/">WebMD</a>
+    <a href = "https://www.healthline.com/">Healthline</a>
   </div>
 </div>
