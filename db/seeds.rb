@@ -1,33 +1,7 @@
-
 # This file should ensure the existence of records required to run the application in every environment (production,
 # development, test). The code here should be idempotent so that it can be executed at any point in every environment.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
-
-# -----------------------------------------------------------------------------
-# SURVEYS
-# -----------------------------------------------------------------------------
-
-puts "Creating Surveys"
-
-Survey.destroy_all
-
-whodas = Survey.create!(
-  title: "WHO: Disability Assesment Schedule 2.0 (WHODAS)",
-  interval_days: [90, 90, 180]
-)
-
-sf36 = Survey.create!(
-  title: "SF-36",
-  interval_days: [90, 90, 180]
-)
-
-puts " Surveys created!"
 
 # -----------------------------------------------------------------------------
 # QUESTIONAIRS (QUESTIONS AND ANSWERS)
@@ -47,9 +21,6 @@ puts " Questions and Answers created!"
 # -----------------------------------------------------------------------------
 # USERS
 # -----------------------------------------------------------------------------
-
-Diagnosis.destroy_all
-
 
 puts "Creating Users"
 
@@ -107,7 +78,7 @@ puts "Users created!"
 
 puts "Creating Diagnoses"
 
-
+Diagnosis.destroy_all
 
 Diagnosis.create!(
   disease: "Asthma",
@@ -241,14 +212,13 @@ puts "places created!"
 
 # Resource.destroy_all
 
-
-# d = [
-# "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Diabetes",
-# "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Cardiovascular disease",
-# "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Asthma",
-# "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Depression",
-# "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Anxiety",
-# "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Bipolar"]
+d = [
+"Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Diabetes",
+"Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Cardiovascular disease",
+"Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Asthma",
+"Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Depression",
+"Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Anxiety",
+"Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Bipolar"]
 
 # n = ["Diabetes", "Cardiovascular disease", "Asthma", "Depression", "Anxiety", "Bipolar"]
 

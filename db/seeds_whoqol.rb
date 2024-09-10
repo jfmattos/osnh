@@ -4,10 +4,14 @@
 # Questions
 # -----------------------------------------------------------------------------
 
+puts "Creating WHOQOL Survey"
+
 whoqol = Survey.create!(
   title: "WHO: Quality of Life (WHOQOL)",
   interval_days: [90, 90, 180]
 )
+
+puts " WHOQOL Survey created!"
 
 whoqol_01 = Question.create!(
   content: 'Como você avaliaria sua qualidade de vida?',

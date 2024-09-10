@@ -1,0 +1,23 @@
+<%= f.simple_fields_for :medications do |med| %>
+  <div class="col-11" data-nested-input-target="medFields">
+    <div class="row">
+      <div class="col-5 border-0 rounded-5">
+        <%= med.input :name, label: false, placeholder: 'Medication' %>
+      </div>
+      <div class="col-6 border-0 rounded-5">
+        <%= med.input :daily_dosage, label: false, placeholder: 'Daily dosage' %>
+      </div>
+    </div>
+  </div>
+  <div class="col-1">
+    <% if diagnosis.persisted? %>
+      <% diagnosis.medications.each do |medication| %>
+        <div class="row mb-3">
+          <%= link_to medication_path(medication), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+            <i class="fa-regular fa-circle-xmark"></i>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
