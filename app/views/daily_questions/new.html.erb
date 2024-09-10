@@ -1,0 +1,20 @@
+<%# DAILY QUESTIONAIR ------------------------------------------------------ %>
+
+<div data-controller="forms" class="container d-flex flex-column">
+
+    <div class="survey_card d-flex flex-column mx-4 my-4 p-5">
+      <span class="mb-5"><%= @question.content %></span>
+        <%= simple_form_for(:daily_questions, url: daily_questions_path,
+            data: { forms_target: "form" }) do |f| %>
+            <%= f.input :answer_id, collection: @question.answers,
+                              as: :check_boxes,
+                              input_html: { class: "tag-selector", data: { action: "change->forms#submit" } },
+                              item_wrapper_class: 'tag-item',
+                              label: false,
+                              label_method: :content,
+                              as: :radio_buttons %>
+            <%= f.hidden_field :question_index, value: params[:question_index].to_i+1 %>
+        <% end %>
+    </div>
+
+</div>

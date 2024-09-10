@@ -1,27 +1,25 @@
 class DailyQuestionsController < ApplicationController
-  before_action :set_survery
 
   def create
+    # raise
     @daily_question = UserAnswer.new(daily_question_params)
     @daily_question.user = current_user
     @daily_question.reply_date = Date.today
-
-    redirect_to user_path(current_user)
-    # flash[:alert] = "Formulário completo!"
+    
+    if @daily_question.save
+      redirect_to user_path(current_user)
+      flash[:alert] = "Daily question completed!"
+    end
   end
 
   def new
-    @question = @survey.questions[params[:question_index].to_i]
+    @question = Survey.last.questions.first
     @daily_question = UserAnswer.new()
   end
 
   private
 
-  def set_survery
-    @survey = Survey.find(params[:survey_id])
-  end
-
   def daily_question_params
-    params.require(:daily_question).permit(:answer_id)
+    params.require(:daily_questions).permit(:answer_id)
   end
 end
