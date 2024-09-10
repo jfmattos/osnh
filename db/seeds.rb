@@ -243,13 +243,12 @@ Resource.destroy_all
 
 
 d = [
-"For Diabetes: in complete sentences, explain the causes, symptoms, and treatments in three short sections titled Causes, Symptoms, and Treatments",
-"For Cardiovascular disease: in complete sentences, explain the causes, symptoms, and treatments in three short sections titled Causes, Symptoms, and Treatments",
-"For Asthma: in complete sentences, explain the causes, symptoms, and treatments in three short sections titled Causes, Symptoms, and Treatments",
-"For Depression: in complete sentences, explain the causes, symptoms, and treatments in three short sections titled Causes, Symptoms, and Treatments",
-"For Anxiety: in complete sentences, explain the causes, symptoms, and treatments in three short sections titled Causes, Symptoms, and Treatments",
-"For Bipolar: in complete sentences, explain the causes, symptoms, and treatments in three short sections titled Causes, Symptoms, and Treatments"
-  ]
+"Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Diabetes",
+"Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Cardiovascular disease",
+"Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Asthma",
+"Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Depression",
+"Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Anxiety",
+"Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Bipolar"]
 
 n = ["Diabetes", "Cardiovascular disease", "Asthma", "Depression", "Anxiety", "Bipolar"]
 
@@ -263,6 +262,6 @@ d.each_with_index do |disease, index|
 
   Resource.create!(name: n[index], details: chatgpt["choices"][0]["message"]["content"])
   puts "Created Resource!"
+
 end
 
-puts "Resources created!"
