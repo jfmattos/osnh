@@ -10,26 +10,6 @@
 #   end
 
 # -----------------------------------------------------------------------------
-# SURVEYS
-# -----------------------------------------------------------------------------
-
-puts "Creating Surveys"
-
-Survey.destroy_all
-
-whodas = Survey.create!(
-  title: "WHO: Disability Assesment Schedule 2.0 (WHODAS)",
-  interval_days: [90, 90, 180]
-)
-
-sf36 = Survey.create!(
-  title: "SF-36",
-  interval_days: [90, 90, 180]
-)
-
-puts " Surveys created!"
-
-# -----------------------------------------------------------------------------
 # QUESTIONAIRS (QUESTIONS AND ANSWERS)
 # -----------------------------------------------------------------------------
 
@@ -47,9 +27,6 @@ puts " Questions and Answers created!"
 # -----------------------------------------------------------------------------
 # USERS
 # -----------------------------------------------------------------------------
-
-Diagnosis.destroy_all
-
 
 puts "Creating Users"
 
@@ -107,7 +84,7 @@ puts "Users created!"
 
 puts "Creating Diagnoses"
 
-
+Diagnosis.destroy_all
 
 Diagnosis.create!(
   disease: "Asthma",
@@ -241,7 +218,6 @@ puts "Creating Resources"
 
 Resource.destroy_all
 
-
 d = [
 "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Diabetes",
 "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Cardiovascular disease",
@@ -264,4 +240,3 @@ d.each_with_index do |disease, index|
   puts "Created Resource!"
 
 end
-
