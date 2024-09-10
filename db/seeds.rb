@@ -10,26 +10,6 @@
 #   end
 
 # -----------------------------------------------------------------------------
-# SURVEYS
-# -----------------------------------------------------------------------------
-
-# puts "Creating Surveys"
-
-# Survey.destroy_all
-
-# whodas = Survey.create!(
-#   title: "WHO: Disability Assesment Schedule 2.0 (WHODAS)",
-#   interval_days: [90, 90, 180]
-# )
-
-# sf36 = Survey.create!(
-#   title: "SF-36",
-#   interval_days: [90, 90, 180]
-# )
-
-# puts " Surveys created!"
-
-# -----------------------------------------------------------------------------
 # QUESTIONAIRS (QUESTIONS AND ANSWERS)
 # -----------------------------------------------------------------------------
 
