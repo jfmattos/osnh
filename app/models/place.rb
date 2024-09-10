@@ -9,4 +9,8 @@ class Place < ApplicationRecord
   using: {
   tsearch: { prefix: true }
   }
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["address", "created_at", "email", "id", "id_value", "latitude", "longitude", "name", "opening_hours", "phone_number", "services", "updated_at"]
+  end
 end

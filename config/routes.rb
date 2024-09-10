@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  authenticate :user, ->(u) { u.admin? } do
+    ActiveAdmin.routes(self)
+  end
   devise_for :users
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
