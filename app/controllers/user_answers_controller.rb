@@ -4,7 +4,8 @@ class UserAnswersController < ApplicationController
   def create
     @user_answer = UserAnswer.new(user_answer_params)
     @user_answer.user = current_user
-    
+    @user_answer.reply_date = Date.today
+
     question_index = params[:user_answer][:question_index].to_i
     survey_length = @survey.questions.length - 1
     

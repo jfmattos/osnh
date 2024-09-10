@@ -27,4 +27,5 @@ Rails.application.routes.draw do
   resources :medications, only: :destroy
 
   resources :resources
+  resources :daily_questions, only: %i[new create]
 end
