@@ -9,11 +9,12 @@ class DiagnosesController < ApplicationController
 
   def new
     @diagnosis = Diagnosis.new
-    5.times { @diagnosis.medications.build }
+    @diagnosis.medications.build
   end
 
   def edit
-
+    @medication = Medication.new
+    @medications = @diagnosis.medications
   end
 
   def create

@@ -1,20 +1,14 @@
-<%= simple_form_for(diagnosis) do |f| %>
+<%= simple_form_for(diagnosis, data: {controller: "nested-input"}) do |f| %>
   <h3>Disease</h3>
   <%= f.input :disease, label: false %>
   <h3>Medications</h3>
-  <div class="card mb-0 border-0 rounded-5">
-    <div class="row">
-      <%= f.simple_fields_for :medications do |med| %>
-        <div class="col-6 border-0 rounded-5">
-          <%= med.input :name, label: false, placeholder: 'Medication' %>
-        </div>
-        <div class="col-6 border-0 rounded-5">
-          <%= med.input :daily_dosage, label: false, placeholder: 'Daily dosage' %>
-        </div>
-      <% end %>
-    </div>
+  <div class="row" data-nested-input-target="medList">
+    <%= render 'medication_input', { diagnosis: @diagnosis, f: f } %>
+  </div>
+  <div class="row">
+    <a href="#" class="btn btn-outline-primary" data-action="click->nested-input#add"><i class="fa-solid fa-square-plus"></i></a>
   </div>
   <div class="card mb-0 border-0 rounded-5 justify-content-center">
-    <%= f.submit :Add, class: 'btn btn-primary rounded-3', data: { turbo: true } %>
+    <%= f.submit :Submit, class: 'btn btn-primary rounded-3', data: { turbo: true } %>
   </div>
 <% end %>
