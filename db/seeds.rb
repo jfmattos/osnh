@@ -48,6 +48,9 @@ puts " Questions and Answers created!"
 # USERS
 # -----------------------------------------------------------------------------
 
+Diagnosis.destroy_all
+
+
 puts "Creating Users"
 
 User.destroy_all
@@ -104,7 +107,7 @@ puts "Users created!"
 
 puts "Creating Diagnoses"
 
-Diagnosis.destroy_all
+
 
 Diagnosis.create!(
   disease: "Asthma",
@@ -235,15 +238,9 @@ puts "places created!"
 # -----------------------------------------------------------------------------
 
 puts "Creating Resources"
-  
+
 Resource.destroy_all
 
-# d = [
-# "Explain to me in five paragraphs the causes, symptoms, and treatments for Diabetes",
-# "Explain to me in five paragraphs the causes, symptoms, and treatments for Cardiovascular disease",
-# "Explain to me in five paragraphs the causes, symptoms, and treatments for Asthma",
-# "Explain to me in five paragraphs the causes, symptoms, and treatments for Depression",
-# "Explain to me in five paragraphs the causes, symptoms, and treatments for Anxiety"]
 
 d = [
 "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Diabetes",
@@ -261,10 +258,10 @@ d.each_with_index do |disease, index|
   chatgpt = client.chat(parameters: {
   model: "gpt-3.5-turbo",
   messages: [{ role: "user", content: disease}]
-})
+  })
 
-Resource.create!(name: n[index], details: chatgpt["choices"][0]["message"]["content"])
-puts "Created Resource!"
+  Resource.create!(name: n[index], details: chatgpt["choices"][0]["message"]["content"])
+  puts "Created Resource!"
+
 end
 
-puts "Resources created!"
