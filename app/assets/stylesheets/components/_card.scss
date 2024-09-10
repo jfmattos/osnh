@@ -74,3 +74,15 @@
 .col-form-label{
   display: none;
 }
+
+@media(max-width: 992px) {
+  .cards-resources {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media(max-width: 768px) {
+  .cards-resources {
+    grid-template-columns: 1fr;
+  }
+}
