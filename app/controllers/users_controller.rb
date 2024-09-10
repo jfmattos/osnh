@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     if answered?
       @my_diagnoses = current_user.diagnoses
     else
-      redirect_to root_path # Daily Question
+      redirect_to new_daily_question_path
     end
   end
 
