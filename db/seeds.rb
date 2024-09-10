@@ -48,9 +48,6 @@ puts " Questions and Answers created!"
 # USERS
 # -----------------------------------------------------------------------------
 
-Diagnosis.destroy_all
-
-
 puts "Creating Users"
 
 User.destroy_all
@@ -107,7 +104,7 @@ puts "Users created!"
 
 puts "Creating Diagnoses"
 
-
+Diagnosis.destroy_all
 
 Diagnosis.create!(
   disease: "Asthma",
@@ -241,7 +238,6 @@ puts "Creating Resources"
 
 Resource.destroy_all
 
-
 d = [
 "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Diabetes",
 "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Cardiovascular disease",
@@ -264,4 +260,3 @@ d.each_with_index do |disease, index|
   puts "Created Resource!"
 
 end
-
