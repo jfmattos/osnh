@@ -1,11 +1,31 @@
-<div class="container">
-  <div class="row col-12 col-lg-6 mt-3 mb-5">
-    <%= simple_form_for(diagnosis) do |f| %>
-      <div data-toggle-target="errors">
-        <%= f.error_notification %>
-      </div>
-      <%= f.input :disease %>
-      <%= f.button :submit, class: 'btn btn-primary rounded-3', data: { turbo: true } %>
-    <% end %>
-  </div>
-</div>
+<% if @my_medication.present? %>
+  <%= simple_form_for(diagnosis, data: {controller: "nested-input", nested_input_medication_id_value: Medication.last.id}) do |f| %>
+    <h3>Disease</h3>
+    <%= f.input :disease, label: false %>
+    <h3>Medications</h3>
+    <div class="row" data-nested-input-target="medList">
+      <%= render 'medication_input', { diagnosis: @diagnosis, f: f } %>
+    </div>
+    <div class="card text-end my-2 border-0 rounded-5 align-items-end">
+      <a href="#" class="btn btn-primary border-0 rounded-3 btn-sm" data-action="click->nested-input#add">Add medication <i class="fa-solid fa-square-plus"></i></a>
+    </div>
+    <div class="card text-end my-2 border-0 rounded-5 align-items-end">
+      <%= f.submit :Submit, class: 'btn btn-primary border-0 rounded-3 btn-sm', data: { turbo: true } %>
+    </div>
+  <% end %>
+<% else %>
+  <%= simple_form_for(diagnosis, data: {controller: "nested-input"}) do |f| %>
+    <h3>Disease</h3>
+    <%= f.input :disease, label: false %>
+    <h3>Medications</h3>
+    <div class="row" data-nested-input-target="medList">
+      <%= render 'medication_input', { diagnosis: @diagnosis, f: f } %>
+    </div>
+    <div class="card text-end my-2 border-0 rounded-5 align-items-end">
+      <a href="#" class="btn btn-primary border-0 rounded-3 btn-sm" data-action="click->nested-input#add">Add medication <i class="fa-solid fa-square-plus"></i></a>
+    </div>
+    <div class="card text-end my-2 border-0 rounded-5 align-items-end">
+      <%= f.submit :Submit, class: 'btn btn-primary border-0 rounded-3 btn-sm', data: { turbo: true } %>
+    </div>
+  <% end %>
+<% end %>

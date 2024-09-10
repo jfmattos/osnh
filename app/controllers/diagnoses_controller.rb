@@ -9,26 +9,23 @@ class DiagnosesController < ApplicationController
 
   def new
     @diagnosis = Diagnosis.new
+    @my_diagnoses = current_user.diagnoses
+    @diagnosis.medications.build
+  end
+
+  def edit
+    @medication = Medication.new
+    @medications = @diagnosis.medications
   end
 
   def create
     @diagnosis = Diagnosis.new(diagnosis_params)
     @diagnosis.user_id = current_user.id
     if @diagnosis.save
-      redirect_to user_path(@diagnosis.user_id)
+      redirect_to user_path(@diagnosis.user_id), notice: "Diagnosis was successfully created.", status: :see_other
     else
-      render 'new', status: :unprocessable_entry
+      render 'new', status: :unprocessable_entity
     end
-  end
-
-  def show
-    @diagnosis = Diagnosis.new
-    @diagnoses = Diagnosis.all
-    @my_diagnoses = current_user.diagnoses
-  end
-
-  def edit
-
   end
 
   def update
@@ -54,6 +51,6 @@ class DiagnosesController < ApplicationController
   end
 
   def diagnosis_params
-    params.require(:diagnosis).permit(:disease, :medication)
+    params.require(:diagnosis).permit(:disease, medications_attributes: %i[id name daily_dosage _destroy])
   end
 end

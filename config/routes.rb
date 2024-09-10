@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
-  resources :surveys, only: [:index, :new, :show] do
-    resources :user_answers, only: [:new, :create]
+  resources :surveys, only: %i[index new show] do
+    resources :user_answers, only: %i[new create]
   end
 
   resources :places, only: :index
@@ -22,9 +22,9 @@ Rails.application.routes.draw do
 
   resources :appointments, only: %i[show index]
 
-  resources :diagnoses do
-    resources :medication, only: %i[create edit destroy]
-  end
+  resources :diagnoses, only: %i[new create edit update destroy]
+
+  resources :medications, only: :destroy
 
   resources :resources
   resources :daily_questions, only: %i[new create]
