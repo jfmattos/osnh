@@ -1,6 +1,6 @@
 <%# QUESTIONAIR ------------------------------------------------------------ %>
 
-<div class="container d-flex flex-column">
+<div data-controller="forms" class="container d-flex flex-column">
 
     <div>
       <h1 class="text-center my-4"><%= @survey.title %></h1>
@@ -8,12 +8,15 @@
 
     <div class="survey_card d-flex flex-column mx-4 my-4 p-5">
       <span class="mb-5"><%= @question.content %></span>
-        <%= simple_form_for([@survey, @user_answer]) do |f| %>
+        <%= simple_form_for([@survey, @user_answer], data: { forms_target: "form" }) do |f| %>
             <%= f.association :answer, collection: @question.answers,
+                              as: :check_boxes,
+                              input_html: { class: "tag-selector", data: { action: "change->forms#submit" } },
+                              item_wrapper_class: 'tag-item',
                               label: false,
                               label_method: :content,
                               as: :radio_buttons %>
-            <%= f.submit 'Enviar', { class: 'btn btn-primary btn-lg w-100 mt-5' } %>
+            <%#= f.submit 'Enviar', { class: 'btn btn-primary btn-lg w-100 mt-5' } %>
             <%= f.hidden_field :question_index, value: params[:question_index].to_i+1 %>
         <% end %>
     </div>

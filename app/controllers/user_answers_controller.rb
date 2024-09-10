@@ -2,6 +2,7 @@ class UserAnswersController < ApplicationController
   before_action :set_survery
 
   def create
+    # binding.b
     @user_answer = UserAnswer.new(user_answer_params)
     @user_answer.user = current_user
     
