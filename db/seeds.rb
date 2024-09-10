@@ -4,26 +4,6 @@
 #
 
 # -----------------------------------------------------------------------------
-# SURVEYS
-# -----------------------------------------------------------------------------
-
-puts "Creating Surveys"
-
-Survey.destroy_all
-
-whodas = Survey.create!(
-  title: "WHO: Disability Assesment Schedule 2.0 (WHODAS)",
-  interval_days: [90, 90, 180]
-)
-
-sf36 = Survey.create!(
-  title: "SF-36",
-  interval_days: [90, 90, 180]
-)
-
-puts " Surveys created!"
-
-# -----------------------------------------------------------------------------
 # QUESTIONAIRS (QUESTIONS AND ANSWERS)
 # -----------------------------------------------------------------------------
 
@@ -228,29 +208,29 @@ puts "places created!"
 # RESOURCES
 # -----------------------------------------------------------------------------
 
-# puts "Creating Resources"
+puts "Creating Resources"
 
-# Resource.destroy_all
+Resource.destroy_all
 
-# d = [
-# "Explain to me in five paragraphs the causes, symptoms, and treatments for Diabetes",
-# "Explain to me in five paragraphs the causes, symptoms, and treatments for Cardiovascular disease",
-# "Explain to me in five paragraphs the causes, symptoms, and treatments for Asthma",
-# "Explain to me in five paragraphs the causes, symptoms, and treatments for Depression",
-# "Explain to me in five paragraphs the causes, symptoms, and treatments for Anxiety"]
+d = [
+"Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Diabetes",
+"Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Cardiovascular disease",
+"Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Asthma",
+"Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Depression",
+"Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Anxiety",
+"Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Bipolar"]
 
-# d = [
-# "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Diabetes",
-# "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Cardiovascular disease",
-# "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Asthma",
-# "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Depression",
-# "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Anxiety",
-# "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Bipolar"]
+n = ["Diabetes", "Cardiovascular disease", "Asthma", "Depression", "Anxiety", "Bipolar"]
 
-# n = ["Diabetes", "Cardiovascular disease", "Asthma", "Depression", "Anxiety", "Bipolar"]
+d.each_with_index do |disease, index|
+  sleep(120)
+  client = OpenAI::Client.new
+  chatgpt = client.chat(parameters: {
+  model: "gpt-3.5-turbo",
+  messages: [{ role: "user", content: disease}]
+  })
 
-# Resource.create!(name: n[index], details: chatgpt["choices"][0]["message"]["content"])
-# puts "Created Resource!"
-# end
+  Resource.create!(name: n[index], details: chatgpt["choices"][0]["message"]["content"])
+  puts "Created Resource!"
 
-# puts "Resources created!"
+end
