@@ -16,11 +16,7 @@ Rails.application.routes.draw do
 
   resources :places, only: :index
 
-  resources :users, only: :show do
-    resources :appointments, only: %i[create edit update destroy]
-  end
-
-  resources :appointments, only: %i[show index]
+  resources :users, only: :show
 
   resources :diagnoses do
     resources :medication, only: %i[create edit destroy]
