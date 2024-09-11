@@ -79,11 +79,13 @@ puts "Users created!"
 
 puts "Creating Daily Answers"
 
+UserAnswer.destroy_all
+
 10.times do |n|
   UserAnswer.create!(
     user: diana,
     answer: Answer.all.sample,
-    reply_date: (reply_date - n),
+    reply_date: (Date.today - n),
     daily_question: true
   )
 end
