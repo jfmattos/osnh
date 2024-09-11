@@ -9,6 +9,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user_answers = current_user.user_answers
+    @daily_answers = @user_answers.where(daily_question: true)
     if answered?
       @my_diagnoses = current_user.diagnoses
     else

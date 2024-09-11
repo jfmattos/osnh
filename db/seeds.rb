@@ -4,7 +4,7 @@
 #
 
 # -----------------------------------------------------------------------------
-# QUESTIONAIRS (QUESTIONS AND ANSWERS)
+# QUESTIONNAIRES (QUESTIONS AND ANSWERS)
 # -----------------------------------------------------------------------------
 
 puts "Creating Questions and Answers"
@@ -17,6 +17,7 @@ Answer.destroy_all
 require_relative "seeds_whoqol"
 
 puts " Questions and Answers created!"
+
 
 # -----------------------------------------------------------------------------
 # USERS
@@ -71,6 +72,23 @@ mary = User.create!(
 )
 
 puts "Users created!"
+
+# -----------------------------------------------------------------------------
+# DAILY QUESTION ANSWERS
+# -----------------------------------------------------------------------------
+
+puts "Creating Daily Answers"
+
+10.times do |n|
+  UserAnswer.create!(
+    user: diana,
+    answer: Answer.all.sample,
+    reply_date: (reply_date - n),
+    daily_question: true
+  )
+end
+
+puts " Daily Answers created!"
 
 # -----------------------------------------------------------------------------
 # DIAGNOSES

@@ -37,9 +37,9 @@
 
         <div class="col-8 border-0 ">
           <div class="card m-2 border-0">
-            <h4 class="card-title fw-bolder text-uppercase">
+            <h3 class="card-title fw-bolder text-uppercase">
               <%= current_user.first_name %> <%= current_user.last_name %>
-            </h4>
+            </h3>
             <p>
               <strong>CNS:</strong> <%= current_user.cns %></p>
             <p>
@@ -60,7 +60,7 @@
   <div class="cards col-12 col-lg-6 border-0 rounded-5">
     <div class="row g-0">
       <div class="card border-0 rounded-5">
-        <h4 class="card-header text-uppercase">My Diagnoses</h4>
+        <h3 class="card-header fw-bolder text-uppercase">My Diagnoses</h3>
         <div class="card-body p-0 mb-2">
 
           <% @my_diagnoses.each do |diagnosis| %>
@@ -101,9 +101,9 @@
   <div class="cards col-12 col-lg-6 border-0  rounded-5">
     <div class="row g-0">
       <div class="card border-0 rounded-5">
-        <h4 class="card-header text-uppercase">How I've been feeling</h4>
-        <div class="card-body p-0 mb-2">
-
+        <h3 class="card-header fw-bolder text-uppercase">How I've been feeling</h3>
+        <div class="card-body p-0 mt-4 mb-2 mx-2">
+          <%= line_chart UserAnswer.pluck(:reply_date, :answer_id), xtitle: "Date", ytitle: "Sentiment" %>
         </div>
       </div>
     </div>
