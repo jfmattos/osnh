@@ -2,6 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :diagnoses
+  has_many :medication, through: :diagnoses
   has_many :user_answers
   has_one_attached :photo
 
@@ -25,4 +26,12 @@ class User < ApplicationRecord
       end
     end
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["address", "admin", "cns", "created_at", "email", "encrypted_password", "first_name", "id", "id_value", "last_name", "phone_number", "remember_created_at", "reset_password_sent_at", "reset_password_token", "updated_at"]
+  end
+  def self.ransackable_associations(auth_object = nil)
+    ["diagnoses", "photo_attachment", "photo_blob", "user_answers"]
+  end
+
 end
