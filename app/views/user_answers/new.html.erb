@@ -10,7 +10,7 @@
 <div data-controller="forms" class="container d-flex flex-column">
 
   <div class="survey_card d-flex flex-column mx-4 my-4 p-5">
-    <span class="mb-5" style="font-size:24px;"><%= @question.content %></span>
+    <span class="question mb-5"><%= @question.content %></span>
     <%= simple_form_for([@survey, @user_answer], data: { forms_target: "form" }) do |f| %>
       <%= f.association :answer, collection: @question.answers,
                         as: :check_boxes,
@@ -25,7 +25,7 @@
     <% end %>
   </div>
 
-<p class="fixed-bottom" style="font-size:15px; color: grey;"><%= @survey.title %></p>
+<p class="progressbar fixed-bottom"><%= @survey.title %></p>
 
 </div>
 
