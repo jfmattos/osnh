@@ -11,6 +11,14 @@ class UsersController < ApplicationController
   def show
     @user_answers = current_user.user_answers
     @daily_answers = @user_answers.where(daily_question: true)
+    @daily_question = Survey.last.questions.first
+    @possible_answers = [
+      'Muito ruim',
+      'Ruim',
+      'Nem ruim, nem boa',
+      'Boa',
+      'Muito boa'
+    ]
     if answered?
       @my_diagnoses = current_user.diagnoses
     else
