@@ -1,33 +1,7 @@
-
 # This file should ensure the existence of records required to run the application in every environment (production,
 # development, test). The code here should be idempotent so that it can be executed at any point in every environment.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
-
-# -----------------------------------------------------------------------------
-# SURVEYS
-# -----------------------------------------------------------------------------
-
-puts "Creating Surveys"
-
-Survey.destroy_all
-
-whodas = Survey.create!(
-  title: "WHO: Disability Assesment Schedule 2.0 (WHODAS)",
-  interval_days: [90, 90, 180]
-)
-
-sf36 = Survey.create!(
-  title: "SF-36",
-  interval_days: [90, 90, 180]
-)
-
-puts " Surveys created!"
 
 # -----------------------------------------------------------------------------
 # QUESTIONAIRS (QUESTIONS AND ANSWERS)
@@ -47,9 +21,6 @@ puts " Questions and Answers created!"
 # -----------------------------------------------------------------------------
 # USERS
 # -----------------------------------------------------------------------------
-
-Diagnosis.destroy_all
-
 
 puts "Creating Users"
 
@@ -107,7 +78,7 @@ puts "Users created!"
 
 puts "Creating Diagnoses"
 
-
+Diagnosis.destroy_all
 
 Diagnosis.create!(
   disease: "Asthma",
@@ -164,7 +135,7 @@ Place.create!(
   address: "R. Cap. Barbosa, 871 - Cocotá, Rio de Janeiro",
   opening_hours: "05:30 - 23:00",
   email: "fit@smart.com",
-  phone_number: "(21)1234-5678",
+  phone_number: "(21) 1234-5678",
   services: "Gym classes"
 )
 
@@ -173,7 +144,7 @@ Place.create!(
   address: "R. Ten. Cleto Campelo, 497 - Cocotá, Rio de Janeiro",
   opening_hours: "07:00 - 22:00",
   email: "sport@club.com",
-  phone_number: "(21)3396-3304",
+  phone_number: "(21) 3396-3304",
   services: "Soccer, basketball, martial arts, swimming"
 )
 
@@ -182,7 +153,7 @@ Place.create!(
   address: "R. Grana, 200 - Ilha do Governador, Rio de Janeiro - RJ, 21920-500",
   opening_hours: "13:00 - 21:00",
   email: "religious@center.com",
-  phone_number: "(21)9697-2119",
+  phone_number: "(21) 9697-2119",
   services: "Charity, spiritual treatment, volunteering"
 )
 
@@ -200,7 +171,7 @@ Place.create!(
   address: "Estrada do Galeão, 322 - Cacuia, Rio de Janeiro",
   opening_hours: "08:00 - 17:00",
   email: "island@union.com",
-  phone_number: "(21)3396-8169",
+  phone_number: "(21) 3396-8169",
   services: "Samba classes"
 )
 
@@ -209,7 +180,7 @@ Place.create!(
   address: "R. Colina, 60 - Jardim Guanabara, Rio de Janeiro",
   opening_hours: "09:00 - 17:00",
   email: "rotary@club.com",
-  phone_number: "(21)24630156",
+  phone_number: "(21) 24630156",
   services: "Public classes and child support"
 )
 
@@ -218,7 +189,7 @@ Place.create!(
   address: "Praia da Olaria, 155 - Cocotá, Rio de Janeiro",
   opening_hours: "09:00 - 17:00",
   email: "civil@registration.com",
-  phone_number: "(21)3386-1504",
+  phone_number: "(21) 3386-1504",
   services: "Civil registration and documentation"
 )
 
@@ -227,7 +198,7 @@ Place.create!(
   address: "Praia da Olaria - Cocotá, Rio de Janeiro",
   opening_hours: "09:00 - 17:00",
   email: "island@forum.com",
-  phone_number: "(21)3626-4700",
+  phone_number: "(21) 3626-4700",
   services: "Tax Enforcement, Judicial Reorganizations and Arbitration-Related Disputes, Special Civil Courts, Mediation and Conciliation."
 )
 
@@ -237,10 +208,9 @@ puts "places created!"
 # RESOURCES
 # -----------------------------------------------------------------------------
 
-puts "Creating Resources"
+# puts "Creating Resources"
 
-Resource.destroy_all
-
+# Resource.destroy_all
 
 d = [
 "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Diabetes",
@@ -250,18 +220,19 @@ d = [
 "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Anxiety",
 "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Bipolar"]
 
-n = ["Diabetes", "Cardiovascular disease", "Asthma", "Depression", "Anxiety", "Bipolar"]
+# n = ["Diabetes", "Cardiovascular disease", "Asthma", "Depression", "Anxiety", "Bipolar"]
 
-d.each_with_index do |disease, index|
-  sleep(120)
-  client = OpenAI::Client.new
-  chatgpt = client.chat(parameters: {
-  model: "gpt-3.5-turbo",
-  messages: [{ role: "user", content: disease}]
-  })
+# d.each_with_index do |disease, index|
+#   sleep(120)
+#   client = OpenAI::Client.new
+#   chatgpt = client.chat(parameters: {
+#   model: "gpt-3.5-turbo",
+#   messages: [{ role: "user", content: disease}]
+# })
 
-  Resource.create!(name: n[index], details: chatgpt["choices"][0]["message"]["content"])
-  puts "Created Resource!"
+# Resource.create!(name: n[index], details: chatgpt["choices"][0]["message"]["content"])
+# puts "Created Resource!"
+# end
 
-end
-
+# puts "Resources created!"
+# AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
