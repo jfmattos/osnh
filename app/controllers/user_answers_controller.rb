@@ -22,6 +22,11 @@ class UserAnswersController < ApplicationController
   def new
     @question = @survey.questions[params[:question_index].to_i]
     @user_answer = UserAnswer.new()
+    
+    # <%= (params[:question_index].to_i+1).fdiv(Survey.last.questions.length) * 100 %>
+    question_index = params[:question_index].to_i+1
+    survey_length = Survey.last.questions.length
+    @survey_percentage = (question_index.fdiv(survey_length) * 100).floor(0)
   end
 
   private
