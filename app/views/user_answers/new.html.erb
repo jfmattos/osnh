@@ -1,35 +1,38 @@
 <%# QUESTIONAIR ------------------------------------------------------------ %>
 
-<%# @survey.title in gray at the botton %>
-
 <div data-controller="forms" class="container d-flex flex-column">
 
-    <div class="survey_card d-flex flex-column mx-4 my-4 p-5">
-      <span class="mb-5"><%= @question.content %></span>
-        <%= simple_form_for([@survey, @user_answer], data: { forms_target: "form" }) do |f| %>
-            <%= f.association :answer, collection: @question.answers,
-                              as: :check_boxes,
-                              input_html: { class: "tag-selector",
-                                            data: { action: "change->forms#submit" } },
-                              item_wrapper_class: 'tag-item',
-                              label: false,
-                              label_method: :content,
-                              as: :radio_buttons %>
-            <%= f.hidden_field :question_index, value: params[:question_index].to_i+1 %>
-        <% end %>
-    </div>
+  <div class="survey_card d-flex flex-column mx-4 my-4 p-5">
+    <span class="mb-5"><%= @question.content %></span>
+    <%= simple_form_for([@survey, @user_answer], data: { forms_target: "form" }) do |f| %>
+      <%= f.association :answer, collection: @question.answers,
+                        as: :check_boxes,
+                        input_html: { class: "tag-selector",
+                                      data: { action: "change->forms#submit" } },
+                        item_wrapper_class: 'tag-item',
+                        label: false,
+                        label_method: :content,
+                        as: :radio_buttons %>
+      <%= f.hidden_field :question_index, value: params[:question_index].to_i+1 %>
+    <% end %>
+  </div>
+
+</div>
 
 <%# Progressbar ------------------------------------------------------------ %>
 <%# https://getbootstrap.com/docs/5.3/components/progress/ %>
 
-    <div class="progress"
-        role="progressbar"
-        aria-label="Example with label"
-        aria-valuenow="10"
-        aria-valuemin="0"
-        aria-valuemax="100">
-        <div class="progress-bar overflow-visible" style="width: <%= "25%" %>">
-            <%= "show" %>
-        </div>
-    </div>
+<div class="progress fixed-bottom"
+      role="progressbar"
+      aria-label="Example with label"
+      aria-valuenow="10"
+      aria-valuemin="0"
+      aria-valuemax="100">
+  <div class="progress-bar overflow-visible" style="width: <%=  "#{@survey_percentage}%"  %>">
+      <%= @survey_percentage %>
+  </div>
 </div>
+
+<%# update e progressbar as the user answers the survey %>
+<%# add the proper css classes to match the style %>
+<%# @survey.title in gray at the botton %>
