@@ -1,8 +1,8 @@
 <%# QUESTIONAIR ------------------------------------------------------------ %>
 
-<div data-controller="forms" class="container d-flex flex-column">
+<%# @survey.title in gray at the botton %>
 
-    <%# <div><h1 class="text-center my-4"><%= @survey.title %\></h1></div> %>
+<div data-controller="forms" class="container d-flex flex-column">
 
     <div class="survey_card d-flex flex-column mx-4 my-4 p-5">
       <span class="mb-5"><%= @question.content %></span>
@@ -15,7 +15,6 @@
                               label: false,
                               label_method: :content,
                               as: :radio_buttons %>
-            <%#= f.submit 'Enviar', { class: 'btn btn-primary btn-lg w-100 mt-5' } %>
             <%= f.hidden_field :question_index, value: params[:question_index].to_i+1 %>
         <% end %>
     </div>
@@ -23,18 +22,14 @@
 <%# Progressbar ------------------------------------------------------------ %>
 <%# https://getbootstrap.com/docs/5.3/components/progress/ %>
 
-<div class="progress"
-     role="progressbar"
-     aria-label="Example with label"
-     aria-valuenow="10"
-     aria-valuemin="0"
-     aria-valuemax="100">
-    
-    <div class="progress-bar overflow-visible text-dark"
-       style="width: <%= "25%" %>">
-        <%= "show" %>
+    <div class="progress"
+        role="progressbar"
+        aria-label="Example with label"
+        aria-valuenow="10"
+        aria-valuemin="0"
+        aria-valuemax="100">
+        <div class="progress-bar overflow-visible" style="width: <%= "25%" %>">
+            <%= "show" %>
+        </div>
     </div>
-
-</div>
-
 </div>
