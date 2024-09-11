@@ -1,6 +1,6 @@
 
 
-<div class="container display-flex mt-3">
+<div class="container body-places display-flex mt-3">
   <div data-controller="map"
       id='map'
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
@@ -26,15 +26,15 @@
     <% @places.each do |place| %>
       <div class="row">
         <div class="col-12">
-          <div class="cards">
+          <div class="cards-places">
             <h4><%= place.name %></h3>
             <div data-controller="read-more" data-read-more-more-text-value="Read more" data-read-more-less-text-value="Read less">
               <div class="my-content" data-read-more-target="content">
-                <p>Address: <%= place.address %></p>
-                <p>Opening hours: <%= place.opening_hours %></p>
-                <p>Email: <%= place.email %></p>
-                <p>Phone: <%= place.phone_number %></p>
-                <p>Services: <%= place.services %></p>
+                <p><i class="fa-solid fa-location-dot"></i> <%= place.address %></p>
+                <p><i class="fa-solid fa-clock"></i> <%= place.opening_hours %></p>
+                <p><i class="fa-solid fa-envelope"></i> <%= place.email %></p>
+                <p><i class="fa-solid fa-phone"></i>  <%= place.phone_number %></p>
+                <p><i class="fa-solid fa-building"></i> <%= place.services %></p>
               </div>
               <button class="btn btn-outline-primary btn-sm mt-2" data-action="read-more#toggle">Read more</button>
             </div>
