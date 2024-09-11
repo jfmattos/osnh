@@ -212,13 +212,13 @@ puts "places created!"
 
 # Resource.destroy_all
 
-d = [
-"Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Diabetes",
-"Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Cardiovascular disease",
-"Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Asthma",
-"Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Depression",
-"Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Anxiety",
-"Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Bipolar"]
+# d = [
+# "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Diabetes",
+# "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Cardiovascular disease",
+# "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Asthma",
+# "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Depression",
+# "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Anxiety",
+# "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Bipolar"]
 
 # n = ["Diabetes", "Cardiovascular disease", "Asthma", "Depression", "Anxiety", "Bipolar"]
 
