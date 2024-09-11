@@ -54,7 +54,6 @@ gem 'cloudinary'
 gem "simple_calendar", "~> 2.4"
 gem "geocoder"
 gem "pg_search"
-gem 'cocoon', '~> 1.2', '>= 1.2.9'
 
 group :development, :test do
   gem "dotenv-rails"
