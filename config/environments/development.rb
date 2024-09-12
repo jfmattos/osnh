@@ -63,6 +63,16 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
+  config.hosts.clear
+  config.hosts << "young-mangos-carry.loca.lt"
+  Rails.application.config.hosts = [
+    IPAddr.new("0.0.0.0/0"),        # All IPv4 addresses.
+    IPAddr.new("::/0"),             # All IPv6 addresses.
+    "http://127.0.0.1:3000/",       # The localhost reserved domain.
+    ENV["RAILS_DEVELOPMENT_HOSTS"]  # Additional comma-separated hosts for development.
+  ]
+
+
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
 
