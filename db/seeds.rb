@@ -4,6 +4,14 @@
 #
 
 # -----------------------------------------------------------------------------
+# SURVEYS
+# -----------------------------------------------------------------------------
+
+# puts "Creating Surveys"
+
+Survey.destroy_all
+
+# -----------------------------------------------------------------------------
 # QUESTIONAIRS (QUESTIONS AND ANSWERS)
 # -----------------------------------------------------------------------------
 
@@ -208,9 +216,9 @@ puts "places created!"
 # RESOURCES
 # -----------------------------------------------------------------------------
 
-# puts "Creating Resources"
+puts "Creating Resources"
 
-# Resource.destroy_all
+Resource.destroy_all
 
 d = [
 "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Diabetes",
@@ -220,19 +228,19 @@ d = [
 "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Anxiety",
 "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Bipolar"]
 
-# n = ["Diabetes", "Cardiovascular disease", "Asthma", "Depression", "Anxiety", "Bipolar"]
+n = ["Diabetes", "Cardiovascular disease", "Asthma", "Depression", "Anxiety", "Bipolar"]
 
-# d.each_with_index do |disease, index|
-#   sleep(120)
-#   client = OpenAI::Client.new
-#   chatgpt = client.chat(parameters: {
-#   model: "gpt-3.5-turbo",
-#   messages: [{ role: "user", content: disease}]
-# })
+d.each_with_index do |disease, index|
+  sleep(120)
+  client = OpenAI::Client.new
+  chatgpt = client.chat(parameters: {
+  model: "gpt-3.5-turbo",
+  messages: [{ role: "user", content: disease}]
+})
 
-# Resource.create!(name: n[index], details: chatgpt["choices"][0]["message"]["content"])
-# puts "Created Resource!"
-# end
+Resource.create!(name: n[index], details: chatgpt["choices"][0]["message"]["content"])
+puts "Created Resource!"
+end
 
-# puts "Resources created!"
-# AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+puts "Resources created!"
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
