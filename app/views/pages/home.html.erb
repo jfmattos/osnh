@@ -3,9 +3,11 @@
   <div class="container">
     <h1>Our Space and Health</h1>
       <p><strong>Take control of your health</strong></p>
-      <div class="button" >
-        <%= link_to "Login", "/users/login", class: "btn btn-info" %>
-      </div>
+      <% if !current_user %>
+        <div class="button" >
+          <%= link_to "Login", "/users/login", class: "btn btn-info" %>
+        </div>
+      <% end %>
   </div>
 </div>
 
@@ -48,7 +50,7 @@
       <%= image_tag "https://kitt.lewagon.com/placeholder/users/guilherme-rizzo", class: "avatar" %>
     <% end %>
   </div>
-  <div class="footer-copyright">
+  <div class="footer-copyright mb-3">
     This app was made with <i class="fas fa-heart"></i> by Le Wagon Batch #1753
   </div>
 </div>
