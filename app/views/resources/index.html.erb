@@ -7,7 +7,7 @@
   </div>
 
   <div class="row justify-content-center">
-    <div class="col-sm-8 my-3">
+    <div class="col-sm-8 my-3 mb-4">
       <%= form_with url: resources_path, method: :get, class: "d-flex" do %>
         <%= text_field_tag :query,
               params[:query],
@@ -24,9 +24,8 @@
       <%= link_to resource_path(resource), class: 'text-decoration-none' do %>
         <%#= adding cloudinary function to show castle images %>
         <%#=if user uploads the picture then it's going to show, else it's showing the DB picture %>
-        <div class="card-category" >
+        <div class="card-category mb-3" >
           <h1><%= resource.name %></h1>
-          <p><%= "More information to protect your health" %></p>
         </div>
       <% end %>
     <% end %>
