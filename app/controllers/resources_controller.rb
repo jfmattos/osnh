@@ -15,5 +15,6 @@ class ResourcesController < ApplicationController
   def show
     @resource = Resource.find(params[:id])
     @match_data = @resource.details.match(/(Causes:.+)(Symptoms:.+)(Treatments:.+)/m)
+    raise
   end
 end
