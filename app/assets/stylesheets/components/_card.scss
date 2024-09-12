@@ -7,13 +7,28 @@
   justify-content: center;
   align-items: center;
   color: $bluelogo;
-  font-size: 24px;
+  font-size: 22px;
   font-weight: bold;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.05);
   border-radius: 5px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.05);
+  box-shadow: 0 0 15px rgba(0,0,0,0.15);
   flex-direction: column;
 }
+.cards-home{
+  background-size: cover;
+  background-position: center;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $bluelogo;
+  font-size: 24px;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+  flex-direction: column;
+  margin-top: 15px;
+}
+
+
 
 .cards-resources {
   display: grid;
