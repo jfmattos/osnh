@@ -90,7 +90,7 @@ puts "Creating Daily Answers"
 UserAnswer.destroy_all
 
 all_answers = Answer.all
-daily_answer_options = all_answers.where(question_id: 1)
+daily_answer_options = all_answers.where(question_id: Question.first.id)
 
 40.times do |n|
   UserAnswer.create!(
