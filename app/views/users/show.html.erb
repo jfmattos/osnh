@@ -31,9 +31,9 @@
         <% end %>
       </div>
       <div>
-        <h4 class="card-title fw-bolder text-uppercase">
+        <h3 class="card-title fw-bolder text-uppercase">
           <%= current_user.first_name %> <%= current_user.last_name %>
-        </h4>
+        </h3>
         <p class="mb-0"><strong>CNS:</strong> <%= current_user.cns %></p>
       </div>
     </div>
@@ -48,7 +48,7 @@
   <%# MY DIAGNOSES %>
   <%# ------------------------------------------------------------------------ %>
   <div class="container cards-profile">
-    <h4 class="card-header text-uppercase mb-3 mt-3">My Diagnoses</h4>
+    <h3 class="card-header fw-bolder text-uppercase mb-3 mt-3">My Diagnoses</h3>
     <div class="p-0 mb-2">
       <% @my_diagnoses.each do |diagnosis| %>
         <div class="card m-0 mb-4">
@@ -85,7 +85,7 @@
 <%# ------------------------------------------------------------------------ %>
 
   <div class="container cards-profile">
-    <h4 class="card-header text-uppercase mb-3 mt-3">How I've been feeling</h4>
+    <h3 class="card-header fw-bolder text-uppercase mb-3 mt-3">How I've been feeling</h3>
     <div class="p-0 mb-2">
       <div class="card-body">
         <div class="row">
