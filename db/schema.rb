@@ -135,7 +135,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_11_152100) do
 
   create_table "surveys", force: :cascade do |t|
     t.string "title"
-    t.integer "interval_days", default: [], array: true
+    t.integer "interval_days"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
