@@ -231,7 +231,7 @@ d = [
 n = ["Diabetes", "Cardiovascular disease", "Asthma", "Depression", "Anxiety", "Bipolar"]
 
 d.each_with_index do |disease, index|
-  sleep(120)
+  sleep(300)
   client = OpenAI::Client.new
   chatgpt = client.chat(parameters: {
   model: "gpt-3.5-turbo",
