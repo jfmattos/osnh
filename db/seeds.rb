@@ -77,20 +77,24 @@ puts "Users created!"
 # DAILY QUESTION ANSWERS
 # -----------------------------------------------------------------------------
 
-puts "Creating Daily Answers"
+# puts "Creating Daily Answers"
 
 UserAnswer.destroy_all
+
+all_answers = Answer.all
+daily_answer_options = all_answers.where(question_id: 1)
 
 10.times do |n|
   UserAnswer.create!(
     user: diana,
-    answer: Answer.all.sample,
+    answer: daily_answer_options.sample,
     reply_date: (Date.today - n),
     daily_question: true
   )
 end
 
-puts " Daily Answers created!"
+
+# puts " Daily Answers created!"
 
 # -----------------------------------------------------------------------------
 # DIAGNOSES
