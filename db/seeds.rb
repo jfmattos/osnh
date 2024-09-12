@@ -252,12 +252,12 @@ puts "Creating Resources"
 Resource.destroy_all
 
 d = [
-"Explain to me in 3 short sections that must mandatorily appear in the response separated by indentation: the causes, symptoms, and treatments for Diabetes",
-"Explain to me in 3 short sections that must mandatorily appear in the response separated by indentation: the causes, symptoms, and treatments for Cardiovascular disease",
-"Explain to me in 3 short sections that must mandatorily appear in the response separated by indentation: the causes, symptoms, and treatments for Asthma",
-"Explain to me in 3 short sections that must mandatorily appear in the response separated by indentation: the causes, symptoms, and treatments for Depression",
-"Explain to me in 3 short sections that must mandatorily appear in the response separated by indentation: the causes, symptoms, and treatments for Anxiety",
-"Explain to me in 3 short sections that must mandatorily appear in the response separated by indentation: the causes, symptoms, and treatments for Bipolar"]
+"Explain to me in 3 short named sections that must mandatorily appear in the response separated by indentation where the first section starts with 'Causes', the second section starts with 'Symptoms' and the last section starts with 'Treatments' for Diabetes",
+"Explain to me in 3 short named sections that must mandatorily appear in the response separated by indentation where the first section starts with 'Causes', the second section starts with 'Symptoms' and the last section starts with 'Treatments' for Cardiovascular disease",
+"Explain to me in 3 short named sections that must mandatorily appear in the response separated by indentation where the first section starts with 'Causes', the second section starts with 'Symptoms' and the last section starts with 'Treatments' for Asthma",
+"Explain to me in 3 short named sections that must mandatorily appear in the response separated by indentation where the first section starts with 'Causes', the second section starts with 'Symptoms' and the last section starts with 'Treatments' for Depression",
+"Explain to me in 3 short named sections that must mandatorily appear in the response separated by indentation where the first section starts with 'Causes', the second section starts with 'Symptoms' and the last section starts with 'Treatments' for Anxiety",
+"Explain to me in 3 short named sections that must mandatorily appear in the response separated by indentation where the first section starts with 'Causes', the second section starts with 'Symptoms' and the last section starts with 'Treatments' for Bipolar"]
 
 n = ["Diabetes", "Cardiovascular disease", "Asthma", "Depression", "Anxiety", "Bipolar"]
 
