@@ -55,6 +55,8 @@ gem "simple_calendar", "~> 2.4"
 gem "geocoder"
 gem "pg_search"
 gem 'activeadmin'
+gem "chartkick"
+gem "groupdate"
 
 group :development, :test do
   gem "dotenv-rails"

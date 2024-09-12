@@ -5,7 +5,8 @@ class DailyQuestionsController < ApplicationController
     @daily_question = UserAnswer.new(daily_question_params)
     @daily_question.user = current_user
     @daily_question.reply_date = Date.today
-    
+    @daily_question.daily_question = true
+
     if @daily_question.save
       redirect_to user_path(current_user)
       flash[:alert] = "Daily question completed!"

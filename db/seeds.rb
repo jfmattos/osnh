@@ -12,7 +12,7 @@
 Survey.destroy_all
 
 # -----------------------------------------------------------------------------
-# QUESTIONAIRS (QUESTIONS AND ANSWERS)
+# QUESTIONNAIRES (QUESTIONS AND ANSWERS)
 # -----------------------------------------------------------------------------
 
 puts "Creating Questions and Answers"
@@ -20,11 +20,33 @@ puts "Creating Questions and Answers"
 Question.destroy_all
 Answer.destroy_all
 
-# require_relative "seeds_sf36"
-# require_relative "seeds_whodas"
+require_relative "seeds_sf36"
+require_relative "seeds_whodas"
 require_relative "seeds_whoqol"
 
 puts " Questions and Answers created!"
+
+# -----------------------------------------------------------------------------
+# DAILY QUESTION ANSWERS
+# -----------------------------------------------------------------------------
+
+puts "Creating Daily Answers"
+
+UserAnswer.destroy_all
+
+all_answers = Answer.all
+daily_answer_options = all_answers.where(question_id: 1)
+
+40.times do |n|
+  UserAnswer.create!(
+    user: diana,
+    answer: daily_answer_options.sample,
+    reply_date: (Date.today - n),
+    daily_question: true
+  )
+end
+
+puts " Daily Answers created!"
 
 # -----------------------------------------------------------------------------
 # USERS
@@ -79,6 +101,14 @@ mary = User.create!(
 )
 
 puts "Users created!"
+
+# -----------------------------------------------------------------------------
+# USER (ADMIN)
+# -----------------------------------------------------------------------------
+
+AdminUser.destroy_all
+
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
 
 # -----------------------------------------------------------------------------
 # DIAGNOSES
@@ -231,7 +261,7 @@ d = [
 n = ["Diabetes", "Cardiovascular disease", "Asthma", "Depression", "Anxiety", "Bipolar"]
 
 d.each_with_index do |disease, index|
-  sleep(300)
+  sleep(120)
   client = OpenAI::Client.new
   chatgpt = client.chat(parameters: {
   model: "gpt-3.5-turbo",
@@ -243,4 +273,3 @@ puts "Created Resource!"
 end
 
 puts "Resources created!"
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

@@ -1,35 +1,38 @@
 
-<div class="banner" min-height= 100%; border-radius-xl; style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(https://res.cloudinary.com/dxmscduce/image/upload/v1725649741/rio_aerial_i1s6kh.avif);">
+<div class="banner"  min-height= 100%; style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(https://res.cloudinary.com/dxmscduce/image/upload/v1725649741/rio_aerial_i1s6kh.avif);">
   <div class="container">
     <h1>Our Space and Health</h1>
       <p><strong>Take control of your health</strong></p>
-      <div class="button" >
-        <%= link_to "Login", "/users/login", class: "btn btn-info" %>
-      </div>
+      <% if !current_user %>
+        <div class="button" >
+          <%= link_to "Login", "/users/login", class: "btn btn-info" %>
+        </div>
+      <% end %>
   </div>
 </div>
 
 <div class="home">
-  <div class="container">
-    <h1><strong>Additional resources</strong></h1>
+  <div class="container p-3 m-3">
+    <h1 class="mb-4">Additional resources</h1>
       <a href = "https://www.mayoclinic.org/diseases-conditions", class='text-decoration-none' >
-        <div class="card-category">
+        <div class="cards-home">
                 Mayo Clinic
         </div>
       </a>
 
       <a href = "https://www.webmd.com/", class='text-decoration-none'>
-        <div class="card-category">
+        <div class="cards-home">
                 WebMD
         </div>
       </a>
 
       <a href = "https://www.healthline.com/", class='text-decoration-none'>
-        <div class="card-category">
+        <div class="cards-home">
                 Healthline
         </div>
       </a>
     </div>
+  </div>
 </div>
 
 <div class="footer">
@@ -43,8 +46,11 @@
     <%= link_to "https://www.linkedin.com/in/diana-saddi-portela-012a24270/", target: "blank", class: "dev" do %>
       <%= image_tag "https://kitt.lewagon.com/placeholder/users/dianasportela", class: "avatar" %>
     <% end %>
+    <%= link_to "https://github.com/guilherme-rizzo/", target: "blank", class: "dev" do %>
+      <%= image_tag "https://kitt.lewagon.com/placeholder/users/guilherme-rizzo", class: "avatar" %>
+    <% end %>
   </div>
-  <div class="footer-copyright">
+  <div class="footer-copyright mb-3">
     This app was made with <i class="fas fa-heart"></i> by Le Wagon Batch #1753
   </div>
 </div>

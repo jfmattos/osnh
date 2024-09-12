@@ -1,5 +1,6 @@
 class Survey < ApplicationRecord
   has_many :questions, dependent: :destroy
+  has_many :answers, through: :questions
   # validates :title, :interval_days, presence: true
 
   # validates :interval_days, numericality: { greater_than: 0 }
@@ -10,7 +11,7 @@ class Survey < ApplicationRecord
   validate :integer_array_items_are_positive_integers
 
   # Serialize the array so that it's stored as a text column in the database
-#  serialize :integer_array, Array
+  # serialize :integer_array, Array
 
   private
 
