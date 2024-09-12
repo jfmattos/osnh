@@ -1,5 +1,6 @@
 <div class= "container" >
-
+ <% content_for :meta_title, "#{@resource.name} is on #{DEFAULT_META["meta_product_name"]}" %>
+ <% content_for :meta_description, @resource.details %>
 
   <div class="banner" min-height= 100%; border-radius-xxl; style="background-image: linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)), url(https://res.cloudinary.com/dxmscduce/image/upload/v1725649741/favela_xa3oro.jpg);">
     <div class="container">

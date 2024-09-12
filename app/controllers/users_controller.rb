@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = current_user
     if answered?
       @my_diagnoses = current_user.diagnoses
     else
