@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user_answers = UserAnswer.all
     @all_answers = Answer.all
     @da_options = @all_answers.where(question_id: 1)
     @my_answers = current_user.user_answers
