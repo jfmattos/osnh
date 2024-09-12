@@ -4,7 +4,7 @@
 #
 
 # -----------------------------------------------------------------------------
-# QUESTIONAIRS (QUESTIONS AND ANSWERS)
+# QUESTIONNAIRES (QUESTIONS AND ANSWERS)
 # -----------------------------------------------------------------------------
 
 puts "Creating Questions and Answers"
@@ -12,11 +12,12 @@ puts "Creating Questions and Answers"
 Question.destroy_all
 Answer.destroy_all
 
-# require_relative "seeds_sf36"
-# require_relative "seeds_whodas"
+require_relative "seeds_sf36"
+require_relative "seeds_whodas"
 require_relative "seeds_whoqol"
 
 puts " Questions and Answers created!"
+
 
 # -----------------------------------------------------------------------------
 # USERS
@@ -71,6 +72,29 @@ mary = User.create!(
 )
 
 puts "Users created!"
+
+# -----------------------------------------------------------------------------
+# DAILY QUESTION ANSWERS
+# -----------------------------------------------------------------------------
+
+puts "Creating Daily Answers"
+
+UserAnswer.destroy_all
+
+all_answers = Answer.all
+daily_answer_options = all_answers.where(question_id: 1)
+
+40.times do |n|
+  UserAnswer.create!(
+    user: diana,
+    answer: daily_answer_options.sample,
+    reply_date: (Date.today - n),
+    daily_question: true
+  )
+end
+
+
+puts " Daily Answers created!"
 
 # -----------------------------------------------------------------------------
 # DIAGNOSES
@@ -208,7 +232,7 @@ puts "places created!"
 # RESOURCES
 # -----------------------------------------------------------------------------
 
-# puts "Creating Resources"
+puts "Creating Resources"
 
 Resource.destroy_all
 
@@ -233,6 +257,8 @@ d.each_with_index do |disease, index|
 Resource.create!(name: n[index], details: chatgpt["choices"][0]["message"]["content"])
 puts "Created Resource!"
 end
+
+puts "Resources created!"
 
 AdminUser.destroy_all
 

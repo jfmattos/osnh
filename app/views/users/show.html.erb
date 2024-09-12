@@ -3,11 +3,6 @@
 <%# ------------------------------------------------------------------------ %>
 
 <div class="container mt-4">
-  <%# <div class="cards col-12 col-lg-6 border-0 rounded-5 p-2">
-    <h1 class="text-center mt-1 mb-0 text-uppercase align-bottom fw-bolder">
-      My Health Space
-    </h1>
-  </div> %>
   <div class="cards-profile">
     <h1 class="text-center mt-1 mb-0 text-uppercase align-bottom fw-bolder">
       My Health Space
@@ -16,84 +11,82 @@
 
 <%# USER INFO %>
 <%# ------------------------------------------------------------------------ %>
-<div class="container cards-profile">
-  <div class="d-flex justify-content-between align-items-center mb-3">
-    <div class="cards-profile-user">
-      <% if current_user.photo.attached? %>
-        <%= cl_image_tag current_user.photo.key,
-          alt: "profile picture" %>
-      <% else %>
-        <%= image_tag "user_icon.jpg",
-          alt: "profile picture" %>
-      <% end %>
-      <%= link_to edit_user_registration_path, class: "text-decoration-none" do%>
-        <i class="fa-solid fa-pen"></i>
-      <% end %>
+  <div class="container cards-profile">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <div class="cards-profile-user">
+        <% if current_user.photo.attached? %>
+          <%= cl_image_tag current_user.photo.key,
+            alt: "profile picture" %>
+        <% else %>
+          <%= image_tag "user_icon.jpg",
+            alt: "profile picture" %>
+        <% end %>
+        <%= link_to edit_user_registration_path, class: "text-decoration-none" do%>
+          <i class="fa-solid fa-pen"></i>
+        <% end %>
+      </div>
+      <div>
+        <h3 class="card-title fw-bolder text-uppercase">
+          <%= current_user.first_name %> <%= current_user.last_name %>
+        </h3>
+        <p class="mb-0"><strong>CNS:</strong> <%= current_user.cns %></p>
+      </div>
     </div>
     <div>
-      <h4 class="card-title fw-bolder text-uppercase">
-        <%= current_user.first_name %> <%= current_user.last_name %>
-      </h4>
-      <p class="mb-0"><strong>CNS:</strong> <%= current_user.cns %></p>
+      <p><i class="fa-solid fa-location-dot"></i> <%= current_user.address %></p>
+      <p><i class="fa-solid fa-phone"></i> <%= current_user.phone_number %></p>
+      <p><i class="fa-solid fa-envelope"></i>  <%= current_user.email %></p>
+
     </div>
   </div>
-  <div>
-    <p><i class="fa-solid fa-location-dot"></i> <%= current_user.address %></p>
-    <p><i class="fa-solid fa-phone"></i> <%= current_user.phone_number %></p>
-    <p><i class="fa-solid fa-envelope"></i>  <%= current_user.email %></p>
 
-  </div>
-</div>
-
-<%# MY DIAGNOSES %>
-<%# ------------------------------------------------------------------------ %>
-<div class="container cards-profile">
-  <h4 class="card-header text-uppercase mb-3 mt-3">My Diagnoses</h4>
-  <div class="p-0 mb-2">
-          <% @my_diagnoses.each do |diagnosis| %>
-            <div class="card m-0 mb-4">
-              <div class="card-header text-uppercase"><h4 class="fw-bolder mb-0"><%= diagnosis.disease %></h4></div>
-              <div class="card-body ">
-                <% diagnosis.medications.each do |medication| %>
-                  <div class="row">
-                    <div class="col-6 border-0-rounded-5">
-                      <strong><%= medication.name %></strong>
-                    </div>
-                    <div class="col-6 border-0-rounded-5">
-                      <p><%= medication.daily_dosage %></p>
-                    </div>
-                  </div>
-                <% end %>
-                <div class="d-flex justify-content-end">
-                  <%= link_to "Edit", edit_diagnosis_path(diagnosis.id), class:"btn btn-primary rounded-3 btn-sm mx-2" %>
-                  <%= link_to "Delete", diagnosis_path(diagnosis.id), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-primary rounded-3 btn-sm mx-2" %>
+  <%# MY DIAGNOSES %>
+  <%# ------------------------------------------------------------------------ %>
+  <div class="container cards-profile">
+    <h3 class="card-header fw-bolder text-uppercase mb-3 mt-3">My Diagnoses</h3>
+    <div class="p-0 mb-2">
+      <% @my_diagnoses.each do |diagnosis| %>
+        <div class="card m-0 mb-4">
+          <div class="card-header text-uppercase"><h4 class="fw-bolder mb-0"><%= diagnosis.disease %></h4></div>
+          <div class="card-body ">
+            <% diagnosis.medications.each do |medication| %>
+              <div class="row">
+                <div class="col-6 border-0-rounded-5">
+                  <strong><%= medication.name %></strong>
+                </div>
+                <div class="col-6 border-0-rounded-5">
+                  <p><%= medication.daily_dosage %></p>
                 </div>
               </div>
+            <% end %>
+            <div class="d-flex justify-content-end">
+              <%= link_to "Edit", edit_diagnosis_path(diagnosis.id), class:"btn btn-primary rounded-3 btn-sm mx-2" %>
+              <%= link_to "Delete", diagnosis_path(diagnosis.id), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-primary rounded-3 btn-sm mx-2" %>
             </div>
-          <% end %>
-
-          <div class="gap-2 d-flex justify-content-end mt-3 mb-3">
-            <%= link_to "Add new diagnosis",
-                new_diagnosis_path,
-                class:"btn btn-primary btn-sm rounded-3 me-2" %>
           </div>
+        </div>
+      <% end %>
+
+      <div class="gap-2 d-flex justify-content-end mt-3 mb-3">
+        <%= link_to "Add new diagnosis",
+            new_diagnosis_path,
+            class:"btn btn-primary btn-sm rounded-3 me-2" %>
+      </div>
     </div>
-</div>
+  </div>
 
 
 <%# HOW I'VE BEEN FEELING %>
 <%# ------------------------------------------------------------------------ %>
 
-  <div class="container p-0">
-    <div class="cards-profile col-12 col-lg-6">
-      <div class="card mb-0 ">
-        <div class="row g-0">
-          <div class="card border-0 rounded-5">
-            <h4 class="card-header text-uppercase">How I've been feeling</h4>
-            <div class="card-body">
-            </div>
-          </div>
-        </div>
+  <div class="container cards-profile">
+    <h3 class="card-header fw-bolder text-uppercase mb-3 mt-3">How I've been feeling</h3>
+    <div class="p-0 mb-2">
+      <div class="card-body">
+        <%= line_chart @my_da.pluck(:reply_date, :answer_id),
+        xmax: Date.today,
+        xmin: (Date.today - 15),
+        height: "120px" %>
       </div>
     </div>
   </div>

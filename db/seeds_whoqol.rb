@@ -147,7 +147,7 @@ answers = [
   'Nem ruim, nem boa',
   'Boa',
   'Muito boa'
-]  
+]
 
 questions = [ whoqol_01, whoqol_02 ]
 
