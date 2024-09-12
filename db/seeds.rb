@@ -250,18 +250,16 @@ puts "places created!"
 puts "Creating Resources"
 
 Resource.destroy_all
-# "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Asthma",
-# "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Depression",
-# "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Anxiety",
-# "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Bipolar"]
-
-# n = ["Diabetes", "Cardiovascular disease", "Asthma", "Depression", "Anxiety", "Bipolar"]
 
 d = [
-"Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Diabetes",
-"Explain to me in 3 short sections that must mandatorily appear in the response separated by indentation: the causes, symptoms, and treatments for Cardiovascular disease"]
+"Explain to me in 3 short sections that must mandatorily appear in the response separated by indentation: the causes, symptoms, and treatments for Diabetes",
+"Explain to me in 3 short sections that must mandatorily appear in the response separated by indentation: the causes, symptoms, and treatments for Cardiovascular disease",
+"Explain to me in 3 short sections that must mandatorily appear in the response separated by indentation: the causes, symptoms, and treatments for Asthma",
+"Explain to me in 3 short sections that must mandatorily appear in the response separated by indentation: the causes, symptoms, and treatments for Depression",
+"Explain to me in 3 short sections that must mandatorily appear in the response separated by indentation: the causes, symptoms, and treatments for Anxiety",
+"Explain to me in 3 short sections that must mandatorily appear in the response separated by indentation: the causes, symptoms, and treatments for Bipolar"]
 
-n = ["Diabetes", "Cardiovascular disease"]
+n = ["Diabetes", "Cardiovascular disease", "Asthma", "Depression", "Anxiety", "Bipolar"]
 
 d.each_with_index do |disease, index|
   sleep(120)
