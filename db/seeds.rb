@@ -4,6 +4,14 @@
 #
 
 # -----------------------------------------------------------------------------
+# SURVEYS
+# -----------------------------------------------------------------------------
+
+# puts "Creating Surveys"
+
+Survey.destroy_all
+
+# -----------------------------------------------------------------------------
 # QUESTIONNAIRES (QUESTIONS AND ANSWERS)
 # -----------------------------------------------------------------------------
 
@@ -17,7 +25,6 @@ Answer.destroy_all
 require_relative "seeds_whoqol"
 
 puts " Questions and Answers created!"
-
 
 # -----------------------------------------------------------------------------
 # USERS
@@ -73,18 +80,19 @@ mary = User.create!(
 
 puts "Users created!"
 
+
 # -----------------------------------------------------------------------------
 # DAILY QUESTION ANSWERS
 # -----------------------------------------------------------------------------
 
-# puts "Creating Daily Answers"
+puts "Creating Daily Answers"
 
 UserAnswer.destroy_all
 
 all_answers = Answer.all
-daily_answer_options = all_answers.where(question_id: 1)
+daily_answer_options = all_answers.where(question_id: Question.first.id)
 
-10.times do |n|
+40.times do |n|
   UserAnswer.create!(
     user: diana,
     answer: daily_answer_options.sample,
@@ -93,8 +101,15 @@ daily_answer_options = all_answers.where(question_id: 1)
   )
 end
 
+puts " Daily Answers created!"
 
-# puts " Daily Answers created!"
+# -----------------------------------------------------------------------------
+# USER (ADMIN)
+# -----------------------------------------------------------------------------
+
+AdminUser.destroy_all
+
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
 
 # -----------------------------------------------------------------------------
 # DIAGNOSES
@@ -232,17 +247,17 @@ puts "places created!"
 # RESOURCES
 # -----------------------------------------------------------------------------
 
-# puts "Creating Resources"
+puts "Creating Resources"
 
 Resource.destroy_all
 
-# d = [
-# "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Diabetes",
-# "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Cardiovascular disease",
-# "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Asthma",
-# "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Depression",
-# "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Anxiety",
-# "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Bipolar"]
+d = [
+"Explain to me in 3 short named sections that must mandatorily appear in the response separated by indentation where the first section starts with 'Causes', the second section starts with 'Symptoms' and the last section starts with 'Treatments' for Diabetes",
+"Explain to me in 3 short named sections that must mandatorily appear in the response separated by indentation where the first section starts with 'Causes', the second section starts with 'Symptoms' and the last section starts with 'Treatments' for Cardiovascular disease",
+"Explain to me in 3 short named sections that must mandatorily appear in the response separated by indentation where the first section starts with 'Causes', the second section starts with 'Symptoms' and the last section starts with 'Treatments' for Asthma",
+"Explain to me in 3 short named sections that must mandatorily appear in the response separated by indentation where the first section starts with 'Causes', the second section starts with 'Symptoms' and the last section starts with 'Treatments' for Depression",
+"Explain to me in 3 short named sections that must mandatorily appear in the response separated by indentation where the first section starts with 'Causes', the second section starts with 'Symptoms' and the last section starts with 'Treatments' for Anxiety",
+"Explain to me in 3 short named sections that must mandatorily appear in the response separated by indentation where the first section starts with 'Causes', the second section starts with 'Symptoms' and the last section starts with 'Treatments' for Bipolar"]
 
 n = ["Diabetes", "Cardiovascular disease", "Asthma", "Depression", "Anxiety", "Bipolar"]
 
@@ -258,6 +273,4 @@ Resource.create!(name: n[index], details: chatgpt["choices"][0]["message"]["cont
 puts "Created Resource!"
 end
 
-AdminUser.destroy_all
-
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+puts "Resources created!"
