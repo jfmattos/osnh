@@ -4,6 +4,14 @@
 #
 
 # -----------------------------------------------------------------------------
+# SURVEYS
+# -----------------------------------------------------------------------------
+
+# puts "Creating Surveys"
+
+Survey.destroy_all
+
+# -----------------------------------------------------------------------------
 # QUESTIONNAIRES (QUESTIONS AND ANSWERS)
 # -----------------------------------------------------------------------------
 
@@ -18,6 +26,27 @@ require_relative "seeds_whoqol"
 
 puts " Questions and Answers created!"
 
+# -----------------------------------------------------------------------------
+# DAILY QUESTION ANSWERS
+# -----------------------------------------------------------------------------
+
+puts "Creating Daily Answers"
+
+UserAnswer.destroy_all
+
+all_answers = Answer.all
+daily_answer_options = all_answers.where(question_id: 1)
+
+40.times do |n|
+  UserAnswer.create!(
+    user: diana,
+    answer: daily_answer_options.sample,
+    reply_date: (Date.today - n),
+    daily_question: true
+  )
+end
+
+puts " Daily Answers created!"
 
 # -----------------------------------------------------------------------------
 # USERS
@@ -74,27 +103,12 @@ mary = User.create!(
 puts "Users created!"
 
 # -----------------------------------------------------------------------------
-# DAILY QUESTION ANSWERS
+# USER (ADMIN)
 # -----------------------------------------------------------------------------
 
-puts "Creating Daily Answers"
+AdminUser.destroy_all
 
-UserAnswer.destroy_all
-
-all_answers = Answer.all
-daily_answer_options = all_answers.where(question_id: 1)
-
-40.times do |n|
-  UserAnswer.create!(
-    user: diana,
-    answer: daily_answer_options.sample,
-    reply_date: (Date.today - n),
-    daily_question: true
-  )
-end
-
-
-puts " Daily Answers created!"
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
 
 # -----------------------------------------------------------------------------
 # DIAGNOSES
@@ -261,7 +275,3 @@ puts "Created Resource!"
 end
 
 puts "Resources created!"
-
-AdminUser.destroy_all
-
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

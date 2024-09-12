@@ -1,4 +1,6 @@
 <div class="container">
+  <% content_for :meta_title, "#{@survey.title} is on #{DEFAULT_META["meta_product_name"]}" %>
+
   <h1 class="text-center my-4"><%= @survey.title %></h1>
 </div>
 <div class="container d-flex flex-column">
