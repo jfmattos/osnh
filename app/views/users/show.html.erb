@@ -3,11 +3,6 @@
 <%# ------------------------------------------------------------------------ %>
 
 <div class="container mt-4">
-  <%# <div class="cards col-12 col-lg-6 border-0 rounded-5 p-2">
-    <h1 class="text-center mt-1 mb-0 text-uppercase align-bottom fw-bolder">
-      My Health Space
-    </h1>
-  </div> %>
   <div class="cards-profile">
     <h1 class="text-center mt-1 mb-0 text-uppercase align-bottom fw-bolder">
       My Health Space
@@ -88,39 +83,10 @@
     <h3 class="card-header fw-bolder text-uppercase mb-3 mt-3">How I've been feeling</h3>
     <div class="p-0 mb-2">
       <div class="card-body">
-        <div class="row">
-          <div class="col-2">
-            <table class="table mt-4">
-              <tbody>
-                <tr>
-                  <th scope="row">5</th>
-                  <td>Very Good</td>
-                </tr>
-                <tr>
-                  <th scope="row">4</th>
-                  <td>Good</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Neither good nor bad</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Bad</td>
-                </tr>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Very Bad</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="col-10">
-            <div class="card border-0 ms-3">
-              <%= line_chart @my_das.pluck(:reply_date, :answer_id), xtitle: false, yaxis: {display: false} %>
-            </div>
-          </div>
-        </div>
+        <%= line_chart @my_da.pluck(:reply_date, :answer_id),
+        xmax: Date.today,
+        xmin: (Date.today - 15),
+        height: "120px" %>
       </div>
     </div>
   </div>
