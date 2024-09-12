@@ -12,8 +12,8 @@ puts "Creating Questions and Answers"
 Question.destroy_all
 Answer.destroy_all
 
-require_relative "seeds_sf36"
-require_relative "seeds_whodas"
+# require_relative "seeds_sf36"
+# require_relative "seeds_whodas"
 require_relative "seeds_whoqol"
 
 puts " Questions and Answers created!"
@@ -235,16 +235,18 @@ puts "places created!"
 puts "Creating Resources"
 
 Resource.destroy_all
+# "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Asthma",
+# "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Depression",
+# "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Anxiety",
+# "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Bipolar"]
+
+# n = ["Diabetes", "Cardiovascular disease", "Asthma", "Depression", "Anxiety", "Bipolar"]
 
 d = [
 "Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Diabetes",
-"Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Cardiovascular disease",
-"Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Asthma",
-"Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Depression",
-"Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Anxiety",
-"Explain to me in 3 short sections separated by indentation: the causes, symptoms, and treatments for Bipolar"]
+"Explain to me in 3 short sections that must mandatorily appear in the response separated by indentation: the causes, symptoms, and treatments for Cardiovascular disease"]
 
-n = ["Diabetes", "Cardiovascular disease", "Asthma", "Depression", "Anxiety", "Bipolar"]
+n = ["Diabetes", "Cardiovascular disease"]
 
 d.each_with_index do |disease, index|
   sleep(120)
