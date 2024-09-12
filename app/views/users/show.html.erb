@@ -91,6 +91,7 @@
           <div class="card border-0 rounded-5">
             <h4 class="card-header text-uppercase">How I've been feeling</h4>
             <div class="card-body">
+            <%= line_chart User.pluck(:date, :population), xtitle: "Size", ytitle: "Population" %>
             </div>
           </div>
         </div>
