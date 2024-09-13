@@ -251,12 +251,12 @@ puts "Creating Resources"
 
 Resource.destroy_all
 
-d = [ "Write an article in three sections about the causes, symptoms, and treatments for Diabetes, with each section containing at least 50 words explaining the respective topic and each section must start with 'Causes', 'Symptoms' and 'Treatments'.",
-"Write an article in three sections about the causes, symptoms, and treatments for Cardiovascular disease, with each section containing at least 50 words explaining the respective topic and each section must start with 'Causes', 'Symptoms' and 'Treatments'.",
-"Write an article in three sections about the causes, symptoms, and treatments for Asthma, with each section containing at least 50 words explaining the respective topic and each section must start with 'Causes', 'Symptoms' and 'Treatments'.",
-"Write an article in three sections about the causes, symptoms, and treatments for Depression, with each section containing at least 50 words explaining the respective topic and each section must start with 'Causes', 'Symptoms' and 'Treatments'.",
-"Write an article in three sections about the causes, symptoms, and treatments for Anxiety, with each section containing at least 50 words explaining the respective topic and each section must start with 'Causes', 'Symptoms' and 'Treatments'.",
-"Write an article in three sections about the causes, symptoms, and treatments for Bipolar, with each section containing at least 50 words explaining the respective topic and each section must start with 'Causes', 'Symptoms' and 'Treatments'."
+d = [ "Explain to me in 3 sections with at least 40 words where the first section must start with 'Causes', the second section must start with 'Symptoms' and the last section must start with 'Treatments' for Diabetes",
+  "Explain to me in 3 sections with at least 40 words where the first section must start with 'Causes', the second section must start with 'Symptoms' and the last section must start with 'Treatments' for Cardiovascular disease",
+  "Explain to me in 3 sections with at least 40 words where the first section must start with 'Causes', the second section must start with 'Symptoms' and the last section must start with 'Treatments' for Asthma",
+  "Explain to me in 3 sections with at least 40 words where the first section must start with 'Causes', the second section must start with 'Symptoms' and the last section must start with 'Treatments' for Depression",
+  "Explain to me in 3 sections with at least 40 words where the first section must start with 'Causes', the second section must start with 'Symptoms' and the last section must start with 'Treatments' for Anxiety",
+  "Explain to me in 3 sections with at least 40 words where the first section must start with 'Causes', the second section must start with 'Symptoms' and the last section must start with 'Treatments' for Bipolar"
 ]
 
 n = ["Diabetes", "Cardiovascular disease", "Asthma", "Depression", "Anxiety", "Bipolar"]
