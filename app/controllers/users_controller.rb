@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     @user = current_user
     @user_answers = UserAnswer.all
     @all_answers = Answer.all
-    @daily_answers = @all_answers.where(question_id: 1)
+    @daily_answers = @all_answers.where(question_id: Survey.last.questions.first)
     @my_answers = current_user.user_answers
     @my_das = @my_answers.where(daily_question: true)
     @my_da = @my_das.each

@@ -2,49 +2,36 @@
 # development, test). The code here should be idempotent so that it can be executed at any point in every environment.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
-
 # -----------------------------------------------------------------------------
 # SURVEYS
 # -----------------------------------------------------------------------------
-
 # puts "Creating Surveys"
-
 Survey.destroy_all
-
 # -----------------------------------------------------------------------------
 # QUESTIONNAIRES (QUESTIONS AND ANSWERS)
 # -----------------------------------------------------------------------------
-
 puts "Creating Questions and Answers"
-
 Question.destroy_all
 Answer.destroy_all
-
 # require_relative "seeds_sf36"
 # require_relative "seeds_whodas"
 require_relative "seeds_whoqol"
-
 puts " Questions and Answers created!"
-
 # -----------------------------------------------------------------------------
 # USERS
 # -----------------------------------------------------------------------------
-
 puts "Creating Users"
-
 User.destroy_all
-
 diana = User.create!(
   first_name: 'Diana',
   last_name: 'Saddi',
-  cns: '701001888084297',
+  cns: '900001777084123',
   address: 'Parque Poeta Manuel Bandeira, S/N - Cocotá, Rio de Janeiro - RJ, 21910-296',
-  phone_number: '(21) 99845-2252',
+  phone_number: '(21) 99123-4552',
   admin: true,
-  email: 'dianasaddi@gmail.com',
+  email: 'diana@gmail.com',
   password: '123456'
 )
-
 john = User.create!(
   first_name: 'John',
   last_name: 'Doe',
@@ -55,7 +42,6 @@ john = User.create!(
   email: 'johnd@1.com',
   password: '123456'
 )
-
 jane = User.create!(
   first_name: 'Jane',
   last_name: 'Doe',
@@ -66,7 +52,6 @@ jane = User.create!(
   email: 'janed@1.com',
   password: '123456'
 )
-
 mary = User.create!(
   first_name: 'Mary',
   last_name: 'Doe',
@@ -77,21 +62,14 @@ mary = User.create!(
   email: 'maryd@1.com',
   password: '123456'
 )
-
 puts "Users created!"
-
-
 # -----------------------------------------------------------------------------
 # DAILY QUESTION ANSWERS
 # -----------------------------------------------------------------------------
-
 puts "Creating Daily Answers"
-
 UserAnswer.destroy_all
-
 all_answers = Answer.all
-daily_answer_options = all_answers.where(question_id: Question.first.id)
-
+daily_answer_options = all_answers.where(question_id: Survey.last.questions.first)
 40.times do |n|
   UserAnswer.create!(
     user: diana,
@@ -100,75 +78,55 @@ daily_answer_options = all_answers.where(question_id: Question.first.id)
     daily_question: true
   )
 end
-
 puts " Daily Answers created!"
-
 # -----------------------------------------------------------------------------
 # USER (ADMIN)
 # -----------------------------------------------------------------------------
-
 AdminUser.destroy_all
-
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
-
 # -----------------------------------------------------------------------------
 # DIAGNOSES
 # -----------------------------------------------------------------------------
-
 puts "Creating Diagnoses"
-
 Diagnosis.destroy_all
-
 Diagnosis.create!(
   disease: "Asthma",
   user: diana
 )
-
 Diagnosis.create!(
   disease: "ADHD",
   user: diana
 )
-
 Diagnosis.create!(
   disease: "Anxiety",
   user: john
 )
-
 Diagnosis.create!(
   disease: "Diabetes",
   user: john
 )
-
 Diagnosis.create!(
   disease: "Hypertension",
   user: jane
 )
-
 Diagnosis.create!(
   disease: "Depression",
   user: jane
 )
-
 Diagnosis.create!(
   disease: "Esquizofrenia",
   user: mary
 )
-
 Diagnosis.create!(
   disease: "Fibromialgia",
   user: mary
 )
-
 puts "Diagnoses created!"
-
 # -----------------------------------------------------------------------------
 # PLACES
 # -----------------------------------------------------------------------------
-
 puts "Creating Places"
-
 Place.destroy_all
-
 Place.create!(
   name: "Fitness Place",
   address: "R. Cap. Barbosa, 871 - Cocotá, Rio de Janeiro",
@@ -177,7 +135,6 @@ Place.create!(
   phone_number: "(21) 1234-5678",
   services: "Gym classes"
 )
-
 Place.create!(
   name: "Sports Club",
   address: "R. Ten. Cleto Campelo, 497 - Cocotá, Rio de Janeiro",
@@ -186,7 +143,6 @@ Place.create!(
   phone_number: "(21) 3396-3304",
   services: "Soccer, basketball, martial arts, swimming"
 )
-
 Place.create!(
   name: "Religious Center",
   address: "R. Grana, 200 - Ilha do Governador, Rio de Janeiro - RJ, 21920-500",
@@ -195,7 +151,6 @@ Place.create!(
   phone_number: "(21) 9697-2119",
   services: "Charity, spiritual treatment, volunteering"
 )
-
 Place.create!(
   name: "Manuel Bandeira Park",
   address: "Praia da Olaria, 155 - Cocotá, Rio de Janeiro",
@@ -204,7 +159,6 @@ Place.create!(
   phone_number: "N/A",
   services: "Sporting equipment, green fields"
 )
-
 Place.create!(
   name: "Governor's Island Union",
   address: "Estrada do Galeão, 322 - Cacuia, Rio de Janeiro",
@@ -213,7 +167,6 @@ Place.create!(
   phone_number: "(21) 3396-8169",
   services: "Samba classes"
 )
-
 Place.create!(
   name: "Rotary Club",
   address: "R. Colina, 60 - Jardim Guanabara, Rio de Janeiro",
@@ -222,7 +175,6 @@ Place.create!(
   phone_number: "(21) 24630156",
   services: "Public classes and child support"
 )
-
 Place.create!(
   name: "Civil Registration",
   address: "Praia da Olaria, 155 - Cocotá, Rio de Janeiro",
@@ -231,7 +183,6 @@ Place.create!(
   phone_number: "(21) 3386-1504",
   services: "Civil registration and documentation"
 )
-
 Place.create!(
   name: "Governor's Island Forum",
   address: "Praia da Olaria - Cocotá, Rio de Janeiro",
@@ -240,15 +191,11 @@ Place.create!(
   phone_number: "(21) 3626-4700",
   services: "Tax Enforcement, Judicial Reorganizations and Arbitration-Related Disputes, Special Civil Courts, Mediation and Conciliation."
 )
-
 puts "places created!"
-
 # -----------------------------------------------------------------------------
 # RESOURCES
 # -----------------------------------------------------------------------------
-
 puts "Creating Resources"
-
 Resource.destroy_all
 
 d = [ "Explain to me in 3 sections with at least 40 words where the first section must start with 'Causes', the second section must start with 'Symptoms' and the last section must start with 'Treatments' for Diabetes",
@@ -260,7 +207,6 @@ d = [ "Explain to me in 3 sections with at least 40 words where the first sectio
 ]
 
 n = ["Diabetes", "Cardiovascular disease", "Asthma", "Depression", "Anxiety", "Bipolar"]
-
 d.each_with_index do |disease, index|
   sleep(120)
   client = OpenAI::Client.new
@@ -268,9 +214,7 @@ d.each_with_index do |disease, index|
   model: "gpt-3.5-turbo",
   messages: [{ role: "user", content: disease}]
 })
-
 Resource.create!(name: n[index], details: chatgpt["choices"][0]["message"]["content"])
 puts "Created Resource!"
 end
-
 puts "Resources created!"
