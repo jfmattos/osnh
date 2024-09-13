@@ -195,26 +195,26 @@ puts "places created!"
 # -----------------------------------------------------------------------------
 # RESOURCES
 # -----------------------------------------------------------------------------
-# puts "Creating Resources"
-# Resource.destroy_all
+puts "Creating Resources"
+Resource.destroy_all
 
-# d = [ "Explain to me in 3 sections with at least 40 words where the first section must start with 'Causes', the second section must start with 'Symptoms' and the last section must start with 'Treatments' for Diabetes",
-#   "Explain to me in 3 sections with at least 40 words where the first section must start with 'Causes', the second section must start with 'Symptoms' and the last section must start with 'Treatments' for Cardiovascular disease",
-#   "Explain to me in 3 sections with at least 40 words where the first section must start with 'Causes', the second section must start with 'Symptoms' and the last section must start with 'Treatments' for Asthma",
-#   "Explain to me in 3 sections with at least 40 words where the first section must start with 'Causes', the second section must start with 'Symptoms' and the last section must start with 'Treatments' for Depression",
-#   "Explain to me in 3 sections with at least 40 words where the first section must start with 'Causes', the second section must start with 'Symptoms' and the last section must start with 'Treatments' for Anxiety",
-#   "Explain to me in 3 sections with at least 40 words where the first section must start with 'Causes', the second section must start with 'Symptoms' and the last section must start with 'Treatments' for Bipolar"
-# ]
+d = [ "Explain to me in 3 sections with at least 40 words where the first section must start with 'Causes', the second section must start with 'Symptoms' and the last section must start with 'Treatments' for Diabetes",
+  "Explain to me in 3 sections with at least 40 words where the first section must start with 'Causes', the second section must start with 'Symptoms' and the last section must start with 'Treatments' for Cardiovascular disease",
+  "Explain to me in 3 sections with at least 40 words where the first section must start with 'Causes', the second section must start with 'Symptoms' and the last section must start with 'Treatments' for Asthma",
+  "Explain to me in 3 sections with at least 40 words where the first section must start with 'Causes', the second section must start with 'Symptoms' and the last section must start with 'Treatments' for Depression",
+  "Explain to me in 3 sections with at least 40 words where the first section must start with 'Causes', the second section must start with 'Symptoms' and the last section must start with 'Treatments' for Anxiety",
+  "Explain to me in 3 sections with at least 40 words where the first section must start with 'Causes', the second section must start with 'Symptoms' and the last section must start with 'Treatments' for Bipolar"
+]
 
-# n = ["Diabetes", "Cardiovascular disease", "Asthma", "Depression", "Anxiety", "Bipolar"]
-# d.each_with_index do |disease, index|
-#   sleep(120)
-#   client = OpenAI::Client.new
-#   chatgpt = client.chat(parameters: {
-#   model: "gpt-3.5-turbo",
-#   messages: [{ role: "user", content: disease}]
-# })
-# Resource.create!(name: n[index], details: chatgpt["choices"][0]["message"]["content"])
-# puts "Created Resource!"
-# end
-# puts "Resources created!"
+n = ["Diabetes", "Cardiovascular disease", "Asthma", "Depression", "Anxiety", "Bipolar"]
+d.each_with_index do |disease, index|
+  sleep(120)
+  client = OpenAI::Client.new
+  chatgpt = client.chat(parameters: {
+  model: "gpt-3.5-turbo",
+  messages: [{ role: "user", content: disease}]
+})
+Resource.create!(name: n[index], details: chatgpt["choices"][0]["message"]["content"])
+puts "Created Resource!"
+end
+puts "Resources created!"
